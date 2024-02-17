@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# creating nessesery folders
+mkdir -p $HOME/Github/ $HOME/Projects/
+
+# installing nala
+sudo apt install nala -y
+
+# installing generic packages
+sudo nala install -y dunst alacritty ripgrep xclip rofi bspwm sxhkd feh lf bat mediainfo catdoc docx2txt odt2txt ffmpegthumbnailer imagemagick mpv sxiv evince file-roller redshift tmux scrot brightnessctl zoxide fd-find lxappearance htop trash-cli blueman upower iw ffmpeg bc nemo ncal lftp ncmpcpp mpd
+
+# installing discord from flatpak
+flatpak install -y flathub com.discordapp.Discord
+
+# installing starship
+curl -sS https://starship.rs/install.sh | sh -s -- -y

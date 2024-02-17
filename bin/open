@@ -1,0 +1,67 @@
+#!/bin/bash
+
+# Ensure a file argument is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <file>"
+    exit 1
+fi
+
+f="$1"
+
+# Check if sudo is needed
+needs_sudo=false
+if [ ! -w "$f" ]; then
+    needs_sudo=true
+fi
+
+run_sudo() {
+    if [ "$1" = "--normal" ]; then
+        shift
+        if [ "$needs_sudo" = true ]; then
+            sudo "$@"
+        else
+            "$@"
+        fi
+    else
+        nohup "$@" >/dev/null 2>&1 &
+    fi
+}
+
+# Ensure the file exists before proceeding
+if [ ! -e "$f" ]; then
+    echo "Error: File '$f' does not exist."
+    exit 1
+fi
+
+# Detect file type
+mime_type=$(mimetype "$f" | rev | cut -d':' -f1 | rev | sed 's/^ *//')
+
+case "$mime_type" in
+text/* | application/json* | application/x-empty | application/x-executable | application/x-shellscript | application/x-desktop | inode/x-empty)
+    run_sudo --normal nvim "$f"
+    ;;
+image/*)
+    run_sudo nsxiv "$f"
+    ;;
+video/* | audio/*)
+    run_sudo nmpv "$f"
+    ;;
+application/pdf)
+    run_sudo evince "$f"
+    ;;
+application/zip | application/x-tar | application/x-rar | application/x-7z-compressed | application/gzip | application/x-bzip2 | application/x-compress)
+    run_sudo file-roller "$f"
+    ;;
+application/msword | application/vnd.openxmlformats-officedocument.wordprocessingml.document)
+    run_sudo libreoffice --writer "$f"
+    ;;
+application/vnd.ms-excel | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+    run_sudo libreoffice --calc "$f"
+    ;;
+application/vnd.ms-powerpoint | application/vnd.openxmlformats-officedocument.presentationml.presentation)
+    run_sudo libreoffice --impress "$f"
+    ;;
+*)
+    run_sudo xdg-open "$f"
+    ;;
+esac

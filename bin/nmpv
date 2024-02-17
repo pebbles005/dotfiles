@@ -1,0 +1,17 @@
+#!/bin/bash
+export LANG=C.UTF-8
+
+# Ensure a file is provided
+if [[ -z "$1" ]]; then
+    echo "Usage: $0 <file>"
+    exit 1
+fi
+
+# Kill existing mpv instance
+pid=$(pidof "mpv")
+if [[ "$pid" ]]; then
+    kill "$pid"
+fi
+
+# Start mpv with the generated playlist, beginning at the correct index
+mpv --player-operation-mode=pseudo-gui "$1"

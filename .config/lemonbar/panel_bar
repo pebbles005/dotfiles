@@ -1,0 +1,97 @@
+#! /bin/sh
+. $HOME/.config/lemonbar/panel_colors
+
+num_mon=$(bspc query -M | wc -l)
+
+while read -r line; do
+    case $line in
+    D*)
+        # clock output
+        time=" ${line#?} "
+        ;;
+    N*)
+        # network
+        network="%{F$COLOR_DEFAULT_FG} ${line#?} %{F-}"
+        ;;
+    B*)
+        # battery
+        battery="%{F$COLOR_DEFAULT_FG}${line#?} %{F-}"
+        ;;
+    W*)
+        # bspwm's state
+        wm=
+        IFS=':'
+        set -- ${line#?}
+        while [ $# -gt 0 ]; do
+            item=$1
+            name=${item#?}
+            case $item in
+            [mM]*)
+                case $item in
+                m*)
+                    # monitor
+                    FG=$COLOR_MONITOR_FG
+                    BG=$COLOR_DEFAULT_BG
+                    on_focused_monitor=
+                    ;;
+                M*)
+                    # focused monitor
+                    FG=$COLOR_FOCUSED_MONITOR_FG
+                    BG=$COLOR_DEFAULT_BG
+                    on_focused_monitor=1
+                    ;;
+                esac
+                [ $num_mon -lt 2 ] && shift && continue
+                wm="${wm}%{F${FG}}%{B${BG}}%{A:bspc monitor -f ${name}:} ${name} %{A}%{B-}%{F-}"
+                ;;
+            [fFoOuU]*)
+                case $item in
+                f*)
+                    shift
+                    continue
+                    ;;
+                F*)
+                    FG=$COLOR_DEFAULT_BG
+                    BG=$COLOR_DEFAULT_BG_FOCUSED
+                    ;;
+                o*)
+                    FG=$COLOR_DEFAULT_FG_MUTED
+                    BG=$COLOR_DEFAULT_BG
+                    ;;
+                O*)
+                    if [ "$on_focused_monitor" ]; then
+                        # focused occupied desktop
+                        FG=$COLOR_DEFAULT_BG
+                        BG=$COLOR_DEFAULT_BG_FOCUSED
+                    else
+                        # active occupied desktop
+                        FG=$COLOR_DEFAULT_FG_MUTED
+                        BG=$COLOR_DEFAULT_BG
+                    fi
+                    ;;
+                u*)
+                    # urgent desktop
+                    FG=$COLOR_DEFAULT_FG
+                    BG=$COLOR_URGENT_BG
+                    ;;
+                U*)
+                    if [ "$on_focused_monitor" ]; then
+                        # focused urgent desktop
+                        FG=$COLOR_DEFAULT_BG
+                        BG=$COLOR_URGENT_BG
+                    else
+                        # active urgent desktop
+                        FG=$COLOR_DEFAULT_FG
+                        BG=$COLOR_URGENT_BG
+                    fi
+                    ;;
+                esac
+                wm="${wm}%{F${FG}}%{B${BG:-'#00000000'}}%{A:bspc desktop -f ${name}:}  ${name}  %{A}%{B-}%{F-}"
+                ;;
+            esac
+            shift
+        done
+        ;;
+    esac
+    printf "%s\n" "%{l}${wm}%{c}${time}%{r}${network}${battery}"
+done

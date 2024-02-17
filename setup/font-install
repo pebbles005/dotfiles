@@ -1,0 +1,8 @@
+#!/bin/sh
+
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts && rm -rf ~/.local/share/fonts/*
+curl -fLO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.zip
+unzip CascadiaMono.zip
+rm CascadiaMono.zip
+cd $OLDPWD

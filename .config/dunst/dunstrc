@@ -1,0 +1,64 @@
+[global]
+    monitor = 0
+    follow = none
+    width = 300
+    origin = bottom-right
+    offset = 20x20
+    indicate_hidden = yes
+    shrink = no
+    notification_height = 0
+    padding = 14
+    horizontal_padding = 14
+    frame_width = 1
+    frame_color = "#99bbaa"
+    brackground = "#191919"
+    font = "CaskaydiaMono Nerd Font Bold 14"
+    sort = yes
+    idle_threshold = 120
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    word_wrap = yes
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+    icon_position = off
+    sticky_history = no
+    history_length = 0
+    dmenu = /usr/bin/dmenu -p dunst:
+    browser = /usr/bin/thorium-browser
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    startup_notification = false
+    verbosity = mesg
+    corner_radius = 0
+    ignore_dbusclose = false
+    force_xinerama = false
+    mouse_left_click = do_action, close_current
+    mouse_right_click = close_all
+
+[shortcuts]
+    close_all = ctrl+space
+
+[urgency_low]
+    background = "#191919"
+    foreground = "#DBDBDB"
+    timeout = 3
+
+[urgency_normal]
+    background = "#191919"
+    foreground = "#DBDBDB"
+    timeout = 3
+
+[urgency_critical]
+    background = "#191919"
+    foreground = "#DBDBDB"
+    frame_color = "#e67e80"
+    timeout = 3
+

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Ensure a filename is provided
+if [ -z "$1" ]; then
+    echo "Usage: sxiv [entry]"
+    exit 1
+elif [ -d "$1" ]; then
+    sxiv -p -a "$1"
+    exit 1
+fi
+
+# Extract the directory and filename
+DIR=$(dirname $(realpath "$1"))
+
+# List all files in the directory and find the index of the specified file
+# LIST=$(find "$DIR" -maxdepth 1 -type f -exec file --mime-type {} + | grep 'image/' | sed 's/:.*//')
+LIST=$(ls 2>/dev/null $DIR/*.{jpeg,jpg,mjpg,mjpeg,gif,bmp,pbm,pgm,ppm,tga,xbm,xpm,tif,tiff,png,svg,svgz,mng,pcx,mov,mpg,mpeg,m2v,mkv,webm,webp,ogm,mp4,m4v,mp4v,vob,qt,nuv,wmv,asf,rm,rmvb,flc,avi,fli,flv,gl,dl,xcf,xwd,yuv,cgm,emf,ogv,ogx})
+INDEX=$(echo $LIST | tr ' ' '\n' | nl -n ln | grep "$1" | awk '{print $1}')
+
+# Check if the file exists in the directory
+if [ -z "$INDEX" ]; then
+    echo "File not found in the directory."
+    exit 1
+fi
+
+# Check if sxiv is already running and kill
+if pgrep -x sxiv >/dev/null; then
+    pkill -x sxiv
+fi
+
+sxiv -p -a -n $INDEX $LIST

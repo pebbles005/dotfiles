@@ -1,0 +1,122 @@
+set cleaner '~/.config/lf/scripts/cleaner'
+set previewer '~/.config/lf/scripts/preview'
+set shell bash
+set ignorecase 
+set number
+set relativenumber
+set mouse
+set info size
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 5
+set cursorpreviewfmt "\033[7;2m"
+set dircounts 
+set incsearch
+set ratios "2:3"
+set drawbox
+
+cmd open ${{
+    open "$f"
+}}
+
+cmd paste &{{
+    set -- $(cat ~/.local/share/lf/files)
+    mode="$1"
+    shift
+    case "$mode" in
+        copy)
+            rsync -av --progress -- "$@" . |
+            stdbuf -i0 -o0 -e0 tr '\r' '\n' |
+            while IFS= read -r line; do
+                lf -remote "send $id echo $line"
+            done
+            ;;
+        move) mv -n -- "$@" .;;
+    esac
+    rm ~/.local/share/lf/files
+    lf -remote "send clear"
+}}
+
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+cmd create %{{
+  name="$1"
+    # Check if the input contains a directory and a file
+    if [[ -d "$name" ]]; then
+        echo "Directory '$name' already exists."
+    elif [[ -f "$name" ]]; then
+        echo "File '$name' already exists."
+    elif [[ "$name" == */* ]]; then
+        # Extract directory path and file name
+        directory="${name%/*}"
+        file="${name##*/}"
+        # Create directory if it doesn't exist
+        if [[ ! -d "$directory" ]]; then
+            mkdir -p "$directory"
+            echo "Directory created: $directory"
+        fi
+        # Create file
+        touch "$directory/$file"
+        echo "File created: $directory/$file"
+    else
+        # Check if the input ends with a slash indicating a directory
+        if [[ "$name" == */ ]]; then
+            name="${name%/}"
+            mkdir -p "$name"
+            echo "Directory created: $name"
+        else
+            # Create file
+            touch "$name"
+            echo "File created: $name"
+        fi
+    fi
+}}
+
+cmd bulk-rename ${{
+    old="$(mktemp)"
+    new="$(mktemp)"
+    if [ -n "$fs" ]; then
+        fs="$(basename $fs)"
+    else
+        fs="$(ls)"
+    fi
+    printf '%s\n' "$fs" >"$old"
+    printf '%s\n' "$fs" >"$new"
+    nvim "$new"
+    [ "$(wc -l < "$new")" -ne "$(wc -l < "$old")" ] && exit
+    paste "$old" "$new" | while IFS= read -r names; do
+        src="$(printf '%s' "$names" | cut -f1)"
+        dst="$(printf '%s' "$names" | cut -f2)"
+        if [ "$src" = "$dst" ] || [ -e "$dst" ]; then
+            continue
+        fi
+        mv -- "$src" "$dst"
+    done
+    rm -- "$old" "$new"
+    lf -remote "send $id unselect"
+}}
+
+map a push :create<space>
+map D delete
+map <backspace> set hidden!
+map E extract
+map p paste
+map R bulk-rename
+map x $$f
+map X !$f
+map o open
+map <enter> open
+map O $mimeopen --ask $f
+map v :toggle; down
+map V invert
+map <esc> :unselect; clear; echo "Selection Cleared"

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sudo nala remove -y fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/Github/.fzf
+sudo -E bash $HOME/Github/.fzf/install --all

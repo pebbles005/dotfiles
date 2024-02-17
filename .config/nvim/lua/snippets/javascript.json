@@ -1,0 +1,18 @@
+{
+  "arrowFunction": {
+    "prefix": "afn",
+    "body": [
+      "const ${1:funcName} = (${2:params}) => {",
+      "\t${3:// logic here}",
+      "};"
+    ],
+    "description": "Creates an arrow function"
+  },
+  "UseState Hook": {
+    "prefix": "useSnippet",
+    "body": [
+      "const [${1:state}, set${2:State}] = useState(${3:initialValue});"
+    ],
+    "description": "React useState hook snippet"
+  }
+}
