@@ -46,11 +46,10 @@
 
 ## Install command for all the repo available pkg
 
-        nala install dunst alacritty ripgrep xclip python3.12-venv polybar rofi bspwm sxhkd feh lf bat mediainfo catdoc docx2txt odt2txt ffmpegthumbnailer imagemagick mpv sxiv evince file-roller redshift tmux maim brightnessctl zoxide fd-find lxappearance htop trash-cli blueman upower iw ffmpeg
+        nala install dunst alacritty ripgrep xclip python3.12-venv rofi bspwm sxhkd feh lf bat mediainfo catdoc docx2txt odt2txt ffmpegthumbnailer imagemagick mpv sxiv evince file-roller redshift tmux maim brightnessctl zoxide fd-find lxappearance htop trash-cli blueman upower iw ffmpeg
 
 ## optional prerequisites
 
-- polybar
 - [i3](https://i3wm.org/docs/repositories.html)
 - [autotiling](https://pypi.org/project/autotiling/)
 - [ly display manager](https://github.com/fairyglade/ly?tab=readme-ov-file#dependencies)
