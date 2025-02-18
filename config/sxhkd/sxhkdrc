@@ -32,20 +32,11 @@ alt + v
 alt + F4
     $HOME/.config/rofi/scripts/rofi-powermenu
 
-alt + c
-    rofi -show calc -no-show-match -no-sort -no-history -lines 0 \
-    -theme-str "element.selected.normal \{ background-color:#00000000; \} \
-    entry \{ placeholder : \"Type to Calculate\"; \} \
-    listview \{ lines : 4; \}"
-
-alt + w
-    $HOME/.config/rofi/scripts/rofi-wifimenu
-
 @Print
-    maim -b 2 -s -c 136,88,189,0.3 -u -l -B "$HOME/Pictures/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png" && notify-send "Screenshot Taken"
+    scrot $HOME/Pictures/screenshot-%Y-%m-%d-%H-%M-%S.png -s -f && notify-send "Screenshot Taken"
 
 alt + @Print 
-    maim -u "$HOME/Pictures/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png" && notify-send "Screenshot Taken"
+    scrot $HOME/Pictures/screenshot-%Y-%m-%d-%H-%M-%S.png && notify-send "Screenshot Taken" 
 
 alt + f
     alacritty -e ~/.config/lf/scripts/lflayer

@@ -47,8 +47,8 @@ return {
 					},
 				},
 				default = { "snippets", "lsp", "path", "buffer" },
-				cmdline = {},
 			},
+			cmdline = { enabled = false },
 		},
 	},
 	{

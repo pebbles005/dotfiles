@@ -1,29 +1,36 @@
 #!/usr/bin/env bash
 
-chosen=$(printf "⏻\n\n󰗽" | rofi -dmenu -i -cycle -hover-select -me-select-entry '' -me-accept-entry MousePrimary -theme-str '
-mainbox {
-    children: ["listview"];
+chosen=$(printf "Poweroff\nReboot\nLog Out" | rofi -dmenu -i -cycle -hover-select -me-select-entry '' -me-accept-entry MousePrimary -theme-str '
+horibox {
+    children:   [ listview ];
 }
 window {
-    width: 20%;                     
-}
-listview{
-    lines: 3;
+    width: 100%;                     
 }
 element {
-    padding: 30px;
     cursor: pointer;
 }
-element-text {
-    font: "nerd 50";
-    vertical-align: 0.5;
-    horizontal-align: 0.5;
+element-text{
+    cursor: pointer;
 }
 ')
 
 case "$chosen" in
-"⏻") poweroff ;;
-"") reboot ;;
-"󰗽") pkill x ;;
-*) exit 1 ;;
+"Poweroff")
+    poweroff
+    ;;
+"Reboot")
+    reboot
+    ;;
+"Log Out")
+    if [ "$GDMSESSION" == "bspwm" ]; then
+        bspc quit
+    else
+        notify-send "doesnt works"
+        # pkill x
+    fi
+    ;;
+*)
+    exit 1
+    ;;
 esac

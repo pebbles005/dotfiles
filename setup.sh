@@ -122,7 +122,6 @@ restore_dir "$main_dir/config/sxhkd/" "$HOME/.config/sxhkd/"
 restore_dir "$main_dir/config/htop/" "$HOME/.config/htop/"
 restore_dir "$main_dir/config/fastfetch/" "$HOME/.config/fastfetch/"
 
-restore_file "$main_dir/config/redshift.conf" "$HOME/.config/redshift.conf"
 restore_file "$main_dir/config/starship.toml" "$HOME/.config/starship.toml"
 
 restore_dir "$main_dir/fonts/" "$HOME/.local/share/fonts/"

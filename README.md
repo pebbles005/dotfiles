@@ -5,11 +5,10 @@
 - ripgrep
 - [node](https://github.com/nodesource/distributions?tab=readme-ov-file#installation-instructions-deb)
 - xclip
-- [neovim](https://github.com/neovim/neovim/blob/master/BUILD.md) (install eslint globally)
+- [neovim](https://github.com/neovim/neovim/blob/master/BUILD.md) (install eslint globally with npm -g)
 - python3.10-venv
-- lemonbar (https://gitlab.com/protesilaos/lemonbar-xft)
+- [lemonbar](https://gitlab.com/protesilaos/lemonbar-xft),libxcb-xinerama0-dev,libxcb-randr0-dev,libxft-dev,libx11-dev,libx11-xcb-dev
 - rofi
-- [rofi-calc](https://github.com/svenstaro/rofi-calc) (use all build commands with sudo)
 - bspwm
 - sxhkd
 - feh
@@ -31,7 +30,7 @@
 - [starship](https://starship.rs/guide/#%F0%9F%9A%80-installation)
 - tmux , [tpp](https://github.com/tmux-plugins/tpm?tab=readme-ov-file#installation) (i.e. run 'prefix I' in tmux to install plugins)
 - [fastfetch](https://github.com/fastfetch-cli/fastfetch?tab=readme-ov-file#linux)
-- maim
+- scrot
 - brightnessctl
 - zoxide
 - fd-find
@@ -43,10 +42,11 @@
 - upower
 - iw
 - lxappearance
+- bc
 
 ## Install command for all the repo available pkg
 
-        nala install dunst alacritty ripgrep xclip python3.12-venv rofi bspwm sxhkd feh lf bat mediainfo catdoc docx2txt odt2txt ffmpegthumbnailer imagemagick mpv sxiv evince file-roller redshift tmux maim brightnessctl zoxide fd-find lxappearance htop trash-cli blueman upower iw ffmpeg
+        nala install dunst alacritty ripgrep xclip python3.12-venv rofi bspwm sxhkd feh lf bat mediainfo catdoc docx2txt odt2txt ffmpegthumbnailer imagemagick mpv sxiv evince file-roller redshift tmux scrot brightnessctl zoxide fd-find lxappearance htop trash-cli blueman upower iw ffmpeg libxcb-xinerama0-dev libxcb-randr0-dev libxft-dev libx11-dev libx11-xcb-dev bc
 
 ## optional prerequisites
 

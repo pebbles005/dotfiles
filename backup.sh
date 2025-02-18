@@ -20,7 +20,6 @@ copy_dir() {
 # Copy individual configuration files
 copy_file "$HOME/.config/tmux/tmux.conf" "$config_dir/tmux/"
 copy_file "$HOME/.config/tmux/tmux-sessionizer" "$config_dir/tmux/"
-copy_file "$HOME/.config/redshift.conf" "$config_dir/"
 copy_file "$HOME/.config/starship.toml" "$config_dir/"
 copy_file "$HOME/.fonts.conf" "$main_dir/"
 copy_file "$HOME/.bashrc" "$main_dir/"
