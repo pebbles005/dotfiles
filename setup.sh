@@ -128,7 +128,6 @@ restore_dir "$main_dir/fonts/" "$HOME/.local/share/fonts/"
 
 # Sync Pictures and extra directories without deleting other files
 sync_dir_content "$main_dir/Pictures" "$HOME/Pictures"
-sync_dir_content "$main_dir/extra" "$HOME/Documents"
 
 copy_user_js
 update_grub

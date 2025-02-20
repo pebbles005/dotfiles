@@ -23,7 +23,6 @@ copy_file "$HOME/.config/tmux/tmux-sessionizer" "$config_dir/tmux/"
 copy_file "$HOME/.config/starship.toml" "$config_dir/"
 copy_file "$HOME/.fonts.conf" "$main_dir/"
 copy_file "$HOME/.bashrc" "$main_dir/"
-copy_file "$HOME/Documents/vimium-options.json" "$extra_dir/"
 copy_file "$HOME/.Xresources" "$main_dir/"
 
 # Copy configuration directories
