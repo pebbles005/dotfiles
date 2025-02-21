@@ -1,10 +1,16 @@
 #!/bin/bash
 
-# Get the window IDs of the removed nodes
+FIFO="/tmp/custom_bspwm_node_remove"
+
+if [ ! -p "$FIFO" ]; then
+    rm -f "$FIFO"
+    mkfifo "$FIFO"
+fi
+
 node_ids="$(bspc query -M -m) $(bspc query -D -d) $(bspc query -N -n)"
 
 # Kill the node
 bspc node -k
 
-# Simulate a custom event with window IDs
-echo "node_remove $node_ids" >>/tmp/custom_bspwm_events
+# Send event to FIFO
+echo "node_remove $node_ids" >"$FIFO" &

@@ -56,20 +56,20 @@ alt + {h,j,k,l}
 alt + {Left,Down,Up,Right}
     $HOME/.config/bspwm/scripts/window_edit --focus {west,south,north,east}
 
-alt + r + {h,j,k,l}
+alt + ctrl + {h,j,k,l}
     $HOME/.config/bspwm/scripts/window_edit --resize {west,south,north,east}
 
-alt + r + {Left,Down,Up,Right}
+alt + ctrl + {Left,Down,Up,Right}
     $HOME/.config/bspwm/scripts/window_edit --resize {west,south,north,east}
 
 alt + space
-    [ "$($HOME/.config/bspwm/scripts/window_resize_state --get)" != "resize" ] && $HOME/.config/bspwm/scripts/window_edit --focus-state
+    $HOME/.config/bspwm/scripts/window_edit --focus-state
 
 alt + shift + {h,j,k,l}
-    [ "$($HOME/.config/bspwm/scripts/window_resize_state --get)" != "resize" ] && $HOME/.config/bspwm/scripts/window_edit --move {west,south,north,east} 
+    $HOME/.config/bspwm/scripts/window_edit --move {west,south,north,east} 
 
 alt + shift + {Left,Down,Up,Right}
-    [ "$($HOME/.config/bspwm/scripts/window_resize_state --get)" != "resize" ] && $HOME/.config/bspwm/scripts/window_edit --move {west,south,north,east} 
+    $HOME/.config/bspwm/scripts/window_edit --move {west,south,north,east} 
 
 alt + Tab
     bspc desktop -f last.occupied
@@ -77,14 +77,11 @@ alt + Tab
 alt + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}' --follow
 
-alt + Caps_Lock
-    $HOME/.config/bspwm/scripts/window_resize_state --reset
-
 alt + shift + space
-    [ "$($HOME/.config/bspwm/scripts/window_resize_state --get)" != "resize" ] && bspc query -N -n focused.floating.local && bspc node -t tiled || bspc node -t floating
+    bspc query -N -n focused.floating.local && bspc node -t tiled || bspc node -t floating
 
 alt + shift + f
-    [ "$($HOME/.config/bspwm/scripts/window_resize_state --get)" != "resize" ] && bspc node -t ~fullscreen
+     bspc node -t ~fullscreen
 
 bspc config pointer_action1 move
 

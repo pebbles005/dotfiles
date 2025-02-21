@@ -27,12 +27,6 @@ ShowNodes() {
     done
 }
 
-ResetResizeState() {
-    if [ "$($HOME/.config/bspwm/scripts/window_resize_state --get)" = "resize" ]; then
-        $HOME/.config/bspwm/scripts/window_resize_state --reset
-    fi
-}
-
 PrimaryMonitor=$(bspc query -M -m)
 
 bspc subscribe node_state | while read -r Event Monitor Desktop Node State Active; do
@@ -60,12 +54,14 @@ bspc subscribe node_remove | while read -r Event Monitor Desktop Node; do
     ShowNodes "$Desktop"
 done &
 
-# Function to create temporary file if it doesn't exist
-if [ ! -f /tmp/custom_bspwm_events ]; then
-    touch /tmp/custom_bspwm_events
+# Ensure FIFO exists
+FIFO="/tmp/custom_bspwm_node_remove"
+if [ ! -p "$FIFO" ]; then
+    rm -f "$FIFO"
+    mkfifo "$FIFO"
 fi
-tail -f /tmp/custom_bspwm_events | while read -r Event Monitor Desktop Node; do
-    # Show bar if no nodes are fullscreen on current desktop
+exec 3<>"$FIFO"
+while read -r Event Monitor Desktop Node <&3; do
     if [ "$Monitor" = "$PrimaryMonitor" ] &&
         [ -z "$(bspc query -N -n .fullscreen -d "$Desktop")" ]; then
         ShowBar
@@ -85,7 +81,6 @@ bspc subscribe node_transfer | while read -r Event SrcMonitor SrcDesktop SrcNode
     if [ -n "$FullscreenDest" ]; then
         bspc node "$SrcNode" -g hidden=on
     fi
-    ResetResizeState
 done &
 
 bspc subscribe desktop_focus | while read -r Event Monitor Desktop; do
@@ -99,5 +94,4 @@ bspc subscribe desktop_focus | while read -r Event Monitor Desktop; do
             ShowBar
         fi
     fi
-    ResetResizeState
 done &
