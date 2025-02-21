@@ -1,13 +1,11 @@
 #! /bin/sh
 
-xrandr --output $(xrandr | grep ' connected' | awk '{print $1}' | head -n 1) --scale 0.75x0.75
+xrandr --output $(xrandr | grep ' connected' | awk '{print $1}' | head -n 1) --scale 0.75x0.75 &
 setxkbmap -option "caps:swapescape" &
-nm-applet &
 pkill -x lemonbar
 $HOME/.config/lemonbar/panel &
 redshift -x && redshift -P -O 4800
-pgrep -x sxhkd >/dev/null || sxhkd &&
-    pkill -USR1 -x sxhkd
+pgrep -x sxhkd >/dev/null || sxhkd && pkill -USR1 -x sxhkd
 feh --no-fehbg --bg-fill '/home/pebbles/Pictures/eva-wall.jpg' &
 pkill -f $HOME/.config/bspwm/scripts/fullscreen_toggle
 $HOME/.config/bspwm/scripts/fullscreen_toggle &
