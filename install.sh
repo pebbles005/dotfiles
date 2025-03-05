@@ -32,23 +32,23 @@ curl -sS https://starship.rs/install.sh | sh -s -- -y
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 #installing fzf
-sudo apt-mark manual fzf
+sudo dpkg -r --force-depends fzf
 nala remove -y fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/Github/.fzf
 sudo -E bash $HOME/Github/.fzf/install --all
 
 #installing picom
-# sudo nala install -y libconfig-dev libdbus-1-dev libegl-dev libev-dev libgl-dev libepoxy-dev libpcre2-dev libpixman-1-dev libx11-xcb-dev libxcb1-dev libxcb-composite0-dev libxcb-damage0-dev libxcb-glx0-dev libxcb-image0-dev libxcb-present-dev libxcb-randr0-dev libxcb-render0-dev libxcb-render-util0-dev libxcb-shape0-dev libxcb-util-dev libxcb-xfixes0-dev meson ninja-build uthash-dev
-# git clone https://github.com/yshui/picom $HOME/Github/picom/
-# cd $HOME/Github/picom/
-# sudo meson setup --buildtype=release build &
-# sudo ninja -C build &
-# sudo ninja -C build install &
-# cd $HOME
+sudo nala install -y libconfig-dev libdbus-1-dev libegl-dev libev-dev libgl-dev libepoxy-dev libpcre2-dev libpixman-1-dev libx11-xcb-dev libxcb1-dev libxcb-composite0-dev libxcb-damage0-dev libxcb-glx0-dev libxcb-image0-dev libxcb-present-dev libxcb-randr0-dev libxcb-render0-dev libxcb-render-util0-dev libxcb-shape0-dev libxcb-util-dev libxcb-xfixes0-dev meson ninja-build uthash-dev
+git clone https://github.com/yshui/picom $HOME/Github/picom/
+cd $HOME/Github/picom/
+sudo meson setup --buildtype=release build &
+sudo ninja -C build &
+sudo ninja -C build install &
+cd $HOME
 
 #installing lemonbar
-# sudo nala install -y libxcb-xinerama0-dev libxcb-randr0-dev libxft-dev libx11-dev libx11-xcb-dev
-# git clone https://gitlab.com/protesilaos/lemonbar-xft $HOME/Github/lemonbar/
-# cd $HOME/Github/lemonbar/
-# sudo make install &
-# cd $HOME
+sudo nala install -y libxcb-xinerama0-dev libxcb-randr0-dev libxft-dev libx11-dev libx11-xcb-dev
+git clone https://gitlab.com/protesilaos/lemonbar-xft $HOME/Github/lemonbar/
+cd $HOME/Github/lemonbar/
+sudo make install &
+cd $HOME
