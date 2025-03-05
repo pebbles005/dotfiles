@@ -7,7 +7,7 @@
 - xclip
 - [neovim](https://github.com/neovim/neovim/blob/master/BUILD.md) (install eslint globally with npm -g)
 - python3.10-venv
-- [lemonbar](https://gitlab.com/protesilaos/lemonbar-xft),libxcb-xinerama0-dev,libxcb-randr0-dev,libxft-dev,libx11-dev,libx11-xcb-dev
+- [lemonbar](https://gitlab.com/protesilaos/lemonbar-xft), libxcb-xinerama0-dev, libxcb-randr0-dev, libxft-dev, libx11-dev, libx11-xcb-dev
 - rofi
 - bspwm
 - sxhkd
@@ -29,7 +29,6 @@
 - redshift
 - [starship](https://starship.rs/guide/#%F0%9F%9A%80-installation)
 - tmux , [tpp](https://github.com/tmux-plugins/tpm?tab=readme-ov-file#installation) (i.e. run 'prefix I' in tmux to install plugins)
-- [fastfetch](https://github.com/fastfetch-cli/fastfetch?tab=readme-ov-file#linux)
 - scrot
 - brightnessctl
 - zoxide
@@ -43,10 +42,7 @@
 - iw
 - lxappearance
 - bc
-
-## Install command for all the repo available pkg
-
-        nala install dunst alacritty ripgrep xclip python3.12-venv rofi bspwm sxhkd feh lf bat mediainfo catdoc docx2txt odt2txt ffmpegthumbnailer imagemagick mpv sxiv evince file-roller redshift tmux scrot brightnessctl zoxide fd-find lxappearance htop trash-cli blueman upower iw ffmpeg libxcb-xinerama0-dev libxcb-randr0-dev libxft-dev libx11-dev libx11-xcb-dev bc
+- ani-cli
 
 ## optional prerequisites
 

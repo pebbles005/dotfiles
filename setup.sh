@@ -129,8 +129,11 @@ restore_dir "$main_dir/fonts/" "$HOME/.local/share/fonts/"
 # Sync Pictures and extra directories without deleting other files
 sync_dir_content "$main_dir/Pictures" "$HOME/Pictures"
 
-copy_user_js
-update_grub
+# To copy firefox configs
+copy_user_js &
 
 # Command to enable brightness control logout login to take effect
-sudo usermod -a -G video ${USER}
+sudo usermod -a -G video ${USER} &
+
+# updating grub config
+update_grub &
