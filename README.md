@@ -42,7 +42,6 @@
 - iw
 - lxappearance
 - bc
-- ani-cli
 
 ## optional prerequisites
 
