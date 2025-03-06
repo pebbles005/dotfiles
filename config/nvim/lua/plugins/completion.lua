@@ -42,7 +42,12 @@ return {
 						module = "blink.cmp.sources.snippets",
 						opts = {
 							search_paths = { "~/.config/nvim/lua/snippets/" },
-							extended_filetypes = {},
+							extended_filetypes = {
+								javascriptreact = { "javascript" },
+								typescriptreact = { "javascript" },
+								typescript = { "javascript" },
+								svelte = { "javascript" },
+							},
 						},
 					},
 				},
