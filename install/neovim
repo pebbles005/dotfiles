@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo nala install -y ninja-build gettext cmake curl build-essential
+sudo nala install -y ninja-build gettext cmake curl build-essential python3.12-venv
 git clone https://github.com/neovim/neovim $HOME/Github/neovim/
 cd $HOME/Github/neovim/
 git checkout stable
