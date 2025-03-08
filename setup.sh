@@ -49,11 +49,11 @@ sync_dir_content() {
 
 # For adding user.js to firefox profiles
 copy_user_js() {
-    firefox_profiles="$HOME/.mozilla/firefox"
+    librewolf_profiles="$HOME/.librewolf"
     user_js="$main_dir/extra/user.js"
-    # Check if the Firefox profiles directory exists
-    if [ ! -d "$firefox_profiles" ]; then
-        echo "Error: Firefox profiles directory not found at $firefox_profiles."
+    # Check if the librewolf profiles directory exists
+    if [ ! -d "$librewolf_profiles" ]; then
+        echo "Error: librewolf profiles directory not found at $librewolf_profiles."
         exit 1
     fi
 
@@ -64,14 +64,14 @@ copy_user_js() {
     fi
 
     # Iterate over all profile folders (only valid directories with a `prefs.js`)
-    for profile in "$firefox_profiles"/*; do
+    for profile in "$librewolf_profiles"/*; do
         if [ -d "$profile" ] && [ -f "$profile/prefs.js" ]; then
             echo "Copying user.js to $profile"
             cp "$user_js" "$profile/user.js"
         fi
     done
 
-    echo "user.js has been copied to all Firefox profiles."
+    echo "user.js has been copied to all librewolf profiles."
 }
 
 update_grub() {
