@@ -6,4 +6,4 @@ cd $HOME/Github/picom/
 sudo meson setup --buildtype=release build &
 sudo ninja -C build &
 sudo ninja -C build install &
-cd $HOME
+cd $OLDPWD

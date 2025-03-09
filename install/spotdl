@@ -1,0 +1,9 @@
+#!/bin/sh
+
+git clone https://github.com/spotDL/spotify-downloader $HOME/Github/spotify-downloader && cd $HOME/Github/spotify-downloader
+sudo nala install -y python3-poetry
+sudo poetry install
+sudo poetry run python3 scripts/build.py
+cd dist
+sudo cp * -r /usr/bin/spotdl
+cd $OLDPWD

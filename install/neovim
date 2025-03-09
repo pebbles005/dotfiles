@@ -7,3 +7,4 @@ git checkout stable
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install &
 sudo npm i -g eslint
+cd $OLDPWD
