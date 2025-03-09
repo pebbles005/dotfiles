@@ -1,6 +1,6 @@
 #!/bin/sh
 main_dir="$HOME/dotfiles"
-config_dir="$main_dir/config"
+config_dir="$main_dir/.config"
 fonts_dir="$main_dir/fonts"
 extra_dir="$main_dir/extra"
 
@@ -24,12 +24,12 @@ copy_file "$HOME/.config/starship.toml" "$config_dir/"
 copy_file "$HOME/.fonts.conf" "$main_dir/"
 copy_file "$HOME/.bashrc" "$main_dir/"
 copy_file "$HOME/.Xresources" "$main_dir/"
+copy_file "$HOME/.config/gtk-3.0/settings.ini" "$config_dir/gtk-3.0/"
 
 # Copy configuration directories
 copy_dir "$HOME/.config/kitty/" "$config_dir/kitty/"
 copy_dir "$HOME/.config/alacritty/" "$config_dir/alacritty/"
 copy_dir "$HOME/.config/polybar/" "$config_dir/polybar/"
-copy_dir "$HOME/.config/gtk-3.0/" "$config_dir/gtk-3.0/"
 copy_dir "$HOME/.config/lemonbar/" "$config_dir/lemonbar/"
 copy_dir "$HOME/.config/lf/" "$config_dir/lf/"
 copy_dir "$HOME/.config/dunst/" "$config_dir/dunst/"
