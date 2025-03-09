@@ -6,7 +6,7 @@ pkill -x lemonbar
 $HOME/.config/lemonbar/panel &
 redshift -x && redshift -P -O 4800 &
 pgrep -x sxhkd >/dev/null || sxhkd && pkill -USR1 -x sxhkd &
-feh --no-fehbg --bg-fill '/home/pebbles/Pictures/eva-wall.jpg' &
+feh --no-fehbg --bg-fill '~/Pictures/eva-wall.jpg' &
 pkill -f $HOME/.config/bspwm/scripts/fullscreen_toggle
 $HOME/.config/bspwm/scripts/fullscreen_toggle &
 pkill -x picom

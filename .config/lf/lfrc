@@ -39,10 +39,10 @@ cmd open ${{
         run_cmd --normal nvim "$f"
         ;;
     image/*)
-        run_cmd ~/.config/sxiv/exec/sxiv-run "$f"
+        run_cmd $HOME/.config/sxiv/exec/sxiv-run "$f"
         ;;
     video/* | audio/*)
-        run_cmd ~/.config/mpv/scripts/mpv-single-instance "$f"
+        run_cmd $HOME/.config/mpv/scripts/mpv-single-instance "$f"
         ;;
     application/pdf)
         run_cmd evince "$f"

@@ -75,10 +75,10 @@ alias mxa='tmux -u a'
 alias mxd='tmux detach'
 alias mxkillall='tmux kill-server'
 alias mxkill='tmux kill-session -t'
-alias mxs='~/.config/tmux/tmux-sessionizer'
-alias lf='~/.config/lf/scripts/lflayer'
-alias mpv='~/.config/mpv/scripts/mpv-single-instance'
-alias sxiv='~/.config/sxiv/exec/sxiv-run'
+alias mxs='$HOME/.config/tmux/tmux-sessionizer'
+alias lf='$HOME/.config/lf/scripts/lflayer'
+alias mpv='$HOME/.config/mpv/scripts/mpv-single-instance'
+alias sxiv='$HOME/.config/sxiv/exec/sxiv-run'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -160,10 +160,10 @@ open() {
         run_cmd nvim "$f"
         ;;
     image/*)
-        run_cmd ~/.config/sxiv/exec/sxiv-run "$f"
+        run_cmd $HOME/.config/sxiv/exec/sxiv-run "$f"
         ;;
     video/* | audio/*)
-        run_cmd ~/.config/mpv/scripts/mpv-single-instance "$f"
+        run_cmd $HOME/.config/mpv/scripts/mpv-single-instance "$f"
         ;;
     application/pdf)
         run_cmd evince "$f"
