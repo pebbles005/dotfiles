@@ -48,3 +48,4 @@ sudo nala remove --purge xviewer -y
 sudo nala remove --purge gnome-online-accounts -y
 sudo nala remove --purge xreader -y
 sudo nala remove --purge celluloid -y
+sudo nala remove --purge firefox -y
