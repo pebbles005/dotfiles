@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # creating nessesery folders
-mkdir -p Github/ Projects/
+mkdir -p $HOME/Github/ $HOME/Projects/
 
 # installing nala
 sudo apt install nala -y

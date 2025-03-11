@@ -47,33 +47,6 @@ sync_dir_content() {
     fi
 }
 
-# For adding user.js to firefox profiles
-copy_user_js() {
-    librewolf_profiles="$HOME/.librewolf"
-    user_js="$main_dir/extra/user.js"
-    # Check if the librewolf profiles directory exists
-    if [ ! -d "$librewolf_profiles" ]; then
-        echo "Error: librewolf profiles directory not found at $librewolf_profiles."
-        exit 1
-    fi
-
-    # Ensure the user.js file exists
-    if [ ! -f "$user_js" ]; then
-        echo "Error: $user_js not found."
-        exit 1
-    fi
-
-    # Iterate over all profile folders (only valid directories with a `prefs.js`)
-    for profile in "$librewolf_profiles"/*; do
-        if [ -d "$profile" ] && [ -f "$profile/prefs.js" ]; then
-            echo "Copying user.js to $profile"
-            cp "$user_js" "$profile/user.js"
-        fi
-    done
-
-    echo "user.js has been copied to all librewolf profiles."
-}
-
 update_grub() {
     FONT_FILE="/etc/default/console-setup"
     echo "Updating TTY font size to 16x32..."
@@ -102,6 +75,7 @@ restore_file "$main_dir/.bashrc" "$HOME/.bashrc"
 restore_file "$main_dir/.Xresources" "$HOME/.Xresources"
 restore_file "$main_dir/.fonts.conf" "$HOME/.fonts.conf"
 restore_file "$main_dir/extra/xorg.conf" "/etc/X11/"
+restore_file "$main_dir/extra/librewolf.overrides.cfg" "$HOME/.librewolf/"
 
 # restore_dir "$main_dir/.config/i3/" "$HOME/.config/i3/"
 # restore_dir "$main_dir/.config/kitty/" "$HOME/.config/kitty/"
@@ -129,11 +103,10 @@ restore_dir "$main_dir/fonts/" "$HOME/.local/share/fonts/"
 # Sync Pictures and extra directories without deleting other files
 sync_dir_content "$main_dir/Pictures" "$HOME/Pictures"
 
-# To copy firefox configs
-copy_user_js &
-
 # Command to enable brightness control logout login to take effect
 sudo usermod -a -G video ${USER} &
 
 # updating grub config
 update_grub &
+
+echo "setup have been done."

@@ -3,3 +3,4 @@
 sudo nala update && sudo nala install extrepo -y
 sudo extrepo enable librewolf
 sudo nala update && sudo nala install librewolf -y
+mkdir $HOME/.librewolf
