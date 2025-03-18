@@ -9,17 +9,18 @@ mkdir -p "$config_dir" "$fonts_dir" "$extra_dir"
 
 # Function to copy single files if they exist
 copy_file() {
-    [ -f "$1" ] && cp "$1" "$2" || echo "$1 does not exist."
+    [ -f "$1" ] && sudo cp "$1" "$2" || echo "$1 does not exist."
 }
 
 # Function to copy directories with rsync if they exist
 copy_dir() {
-    [ -d "$1" ] && rsync -av --delete-before "$1" "$2" || echo "$1 does not exist."
+    [ -d "$1" ] && sudo rsync -av --delete-before "$1" "$2" || echo "$1 does not exist."
 }
 
 # Copy individual configuration files
 copy_file "$HOME/.config/tmux/tmux.conf" "$config_dir/tmux/"
-copy_file "$HOME/.librewolf/librewolf.overrides.cfg" "$config_dir/extra/"
+copy_file "$HOME/.librewolf/librewolf.overrides.cfg" "$extra_dir"
+copy_file "/etc/X11/xorg.conf" "$extra_dir"
 copy_file "$HOME/.config/tmux/tmux-sessionizer" "$config_dir/tmux/"
 copy_file "$HOME/.config/starship.toml" "$config_dir/"
 copy_file "$HOME/.fonts.conf" "$main_dir/"
