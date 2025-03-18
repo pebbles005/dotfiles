@@ -45,8 +45,6 @@
 
 ## optional prerequisites
 
-- [i3](https://i3wm.org/docs/repositories.html)
-- [autotiling](https://pypi.org/project/autotiling/)
 - [ly display manager](https://github.com/fairyglade/ly?tab=readme-ov-file#dependencies)
   ly config file situated in `/etc/ly/config.ini`
   To change the color pallet go to `/lib/systemd/system/ly.service` and add `ExecStartPre=/usr/bin/printf '%%b' '\e]P0191919\e]P7CDD6F4\ec'` in [Service]
