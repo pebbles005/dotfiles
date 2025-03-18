@@ -1,8 +1,6 @@
 [colors.primary]
 foreground = "#E5E9F0"
 background = "#191919"
-dim_foreground = "#E5E9F0"
-bright_foreground = "#E5E9F0"
 
 [colors.search.matches]
 foreground = "CellBackground"
@@ -12,21 +10,9 @@ background = "CellForeground"
 foreground = "CellBackground"
 background = "CellForeground"
 
-[colors.hints.start]
-foreground = "#908caa"
-background = "#2a273f"
-
-[colors.hints.end]
-foreground = "#6e6a86"
-background = "#2a273f"
-
-[colors.line_indicator]
-foreground = "None"
-background = "None"
-
 [colors.footer_bar]
 foreground = "#E5E9F0"
-background = "#3B4252"
+background = "#191919"
 
 [colors.normal]
 black = "#61677a"
@@ -47,4 +33,6 @@ blue = "#81A1C1"
 magenta = "#B988B0"
 cyan = "#88C0D0"
 white = "#E5E9F0"
+
+
 

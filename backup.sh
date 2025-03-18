@@ -19,6 +19,7 @@ copy_dir() {
 
 # Copy individual configuration files
 copy_file "$HOME/.config/tmux/tmux.conf" "$config_dir/tmux/"
+copy_file "$HOME/.librewolf/librewolf.overrides.cfg" "$config_dir/extra/"
 copy_file "$HOME/.config/tmux/tmux-sessionizer" "$config_dir/tmux/"
 copy_file "$HOME/.config/starship.toml" "$config_dir/"
 copy_file "$HOME/.fonts.conf" "$main_dir/"
@@ -27,9 +28,7 @@ copy_file "$HOME/.Xresources" "$main_dir/"
 copy_file "$HOME/.config/gtk-3.0/settings.ini" "$config_dir/gtk-3.0/"
 
 # Copy configuration directories
-copy_dir "$HOME/.config/kitty/" "$config_dir/kitty/"
 copy_dir "$HOME/.config/alacritty/" "$config_dir/alacritty/"
-copy_dir "$HOME/.config/polybar/" "$config_dir/polybar/"
 copy_dir "$HOME/.config/lemonbar/" "$config_dir/lemonbar/"
 copy_dir "$HOME/.config/lf/" "$config_dir/lf/"
 copy_dir "$HOME/.config/dunst/" "$config_dir/dunst/"
@@ -37,10 +36,8 @@ copy_dir "$HOME/.config/nvim/" "$config_dir/nvim/"
 copy_dir "$HOME/.config/mpv/" "$config_dir/mpv/"
 copy_dir "$HOME/.config/sxiv/" "$config_dir/sxiv/"
 copy_dir "$HOME/.config/rofi/" "$config_dir/rofi/"
-copy_dir "$HOME/.config/i3/" "$config_dir/i3/"
 copy_dir "$HOME/.config/bspwm/" "$config_dir/bspwm/"
 copy_dir "$HOME/.config/picom/" "$config_dir/picom/"
 copy_dir "$HOME/.config/sxhkd/" "$config_dir/sxhkd/"
 copy_dir "$HOME/.config/htop/" "$config_dir/htop/"
 copy_dir "$HOME/.local/share/fonts/" "$fonts_dir/"
-copy_dir "$HOME/.config/fastfetch/" "$config_dir/fastfetch/"
