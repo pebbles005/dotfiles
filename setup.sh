@@ -100,9 +100,9 @@ restore_dir "$main_dir/fonts/" "$HOME/.local/share/fonts/"
 sync_dir_content "$main_dir/Pictures" "$HOME/Pictures"
 
 # Command to enable brightness control logout login to take effect
-sudo usermod -a -G video ${USER} &
+sudo usermod -a -G video ${USER}
 
 # updating grub config
-update_grub &
+update_grub
 
 echo "setup have been done."
