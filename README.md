@@ -41,7 +41,10 @@
 - upower
 - iw
 - lxappearance
+- ffmpeg
 - bc
+- nemo
+- ncal
 
 ## optional prerequisites
 
