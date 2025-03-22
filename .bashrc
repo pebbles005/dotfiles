@@ -59,6 +59,7 @@ export _ZO_FZF_OPTS="$fzf_defaults"
 
 # GENERAL ALIAS'S
 alias cat='batcat --theme=Nord'
+alias cal="ncal -C"
 alias cp='cp -i -v'
 alias mv='mv -i -v'
 alias rm='rm -i -v'
@@ -75,10 +76,8 @@ alias mxa='tmux -u a'
 alias mxd='tmux detach'
 alias mxkillall='tmux kill-server'
 alias mxkill='tmux kill-session -t'
-alias mxs='$HOME/.config/tmux/tmux-sessionizer'
-alias lf='$HOME/.config/lf/scripts/lflayer'
-alias mpv='$HOME/.config/mpv/scripts/mpv-single-instance'
-alias sxiv='$HOME/.config/sxiv/exec/sxiv-run'
+alias mxs='tmux-sessionizer'
+alias lf='lflayer'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -139,55 +138,55 @@ ftext() {
     grep -iIHrn --color=always "$1" . | less -r
 }
 
-open() {
-    f="$1"
-    needs_sudo=false
-
-    if [ ! -w "$f" ]; then
-        needs_sudo=true
-    fi
-
-    run_cmd() {
-        if [ "$needs_sudo" = true ]; then
-            sudo "$@"
-        else
-            "$@"
-        fi
-    }
-
-    case $(file --mime-type "$f" -bL) in
-    text/* | application/json* | application/x-empty | application/x-executable | application/x-shellscript | application/x-desktop | inode/x-empty)
-        run_cmd nvim "$f"
-        ;;
-    image/*)
-        run_cmd $HOME/.config/sxiv/exec/sxiv-run "$f"
-        ;;
-    video/* | audio/*)
-        run_cmd $HOME/.config/mpv/scripts/mpv-single-instance "$f"
-        ;;
-    application/pdf)
-        run_cmd evince "$f"
-        ;;
-    application/zip | application/x-tar | application/x-rar | application/x-7z-compressed | application/gzip | application/x-bzip2 | application/x-compress)
-        run_cmd file-roller "$f"
-        ;;
-    application/msword | application/vnd.openxmlformats-officedocument.wordprocessingml.document)
-        run_cmd libreoffice --writer "$f"
-        ;;
-    application/vnd.ms-excel | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
-        run_cmd libreoffice --calc "$f"
-        ;;
-    application/vnd.ms-powerpoint | application/vnd.openxmlformats-officedocument.presentationml.presentation)
-        run_cmd libreoffice --impress "$f"
-        ;;
-    application/octet-stream)
-        run_cmd xdg-open "$f"
-        ;;
-    *)
-        run_cmd xdg-open "$f"
-        ;;
-    esac
-}
+# open() {
+#     f="$1"
+#     needs_sudo=false
+#
+#     if [ ! -w "$f" ]; then
+#         needs_sudo=true
+#     fi
+#
+#     run_cmd() {
+#         if [ "$needs_sudo" = true ]; then
+#             sudo "$@"
+#         else
+#             "$@"
+#         fi
+#     }
+#
+#     case $(file --mime-type "$f" -bL) in
+#     text/* | application/json* | application/x-empty | application/x-executable | application/x-shellscript | application/x-desktop | inode/x-empty)
+#         run_cmd nvim "$f"
+#         ;;
+#     image/*)
+#         run_cmd sxiv "$f"
+#         ;;
+#     video/* | audio/*)
+#         run_cmd mpv "$f"
+#         ;;
+#     application/pdf)
+#         run_cmd evince "$f"
+#         ;;
+#     application/zip | application/x-tar | application/x-rar | application/x-7z-compressed | application/gzip | application/x-bzip2 | application/x-compress)
+#         run_cmd file-roller "$f"
+#         ;;
+#     application/msword | application/vnd.openxmlformats-officedocument.wordprocessingml.document)
+#         run_cmd libreoffice --writer "$f"
+#         ;;
+#     application/vnd.ms-excel | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
+#         run_cmd libreoffice --calc "$f"
+#         ;;
+#     application/vnd.ms-powerpoint | application/vnd.openxmlformats-officedocument.presentationml.presentation)
+#         run_cmd libreoffice --impress "$f"
+#         ;;
+#     application/octet-stream)
+#         run_cmd xdg-open "$f"
+#         ;;
+#     *)
+#         run_cmd xdg-open "$f"
+#         ;;
+#     esac
+# }
 
 fd() {
     local dir="${1:-.}"

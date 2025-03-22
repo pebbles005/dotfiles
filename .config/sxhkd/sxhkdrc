@@ -30,7 +30,7 @@ alt + v
     pavucontrol -t 4
 
 alt + F4
-    $HOME/.config/rofi/scripts/rofi-powermenu
+    rofi-powermenu
 
 @Print
     scrot $HOME/Pictures/screenshot-%Y-%m-%d-%H-%M-%S.png -s -f && notify-send "Screenshot Taken"
@@ -39,7 +39,7 @@ alt + @Print
     scrot $HOME/Pictures/screenshot-%Y-%m-%d-%H-%M-%S.png && notify-send "Screenshot Taken" 
 
 alt + f
-    alacritty -e ~/.config/lf/scripts/lflayer
+    alacritty -e lflayer
 
 alt + shift + r
     bspc wm -r 
@@ -48,28 +48,28 @@ alt + shift + q
     bspc quit
     
 alt + {x,q}
-	{$HOME/.config/bspwm/scripts/custom_node_remove_event,bspc node -c }
+	{bspwm_node_remove_event,bspc node -c }
 
 alt + {h,j,k,l}
-    $HOME/.config/bspwm/scripts/window_edit --focus {west,south,north,east}
+    bspwm_window_edit --focus {west,south,north,east}
 
 alt + {Left,Down,Up,Right}
-    $HOME/.config/bspwm/scripts/window_edit --focus {west,south,north,east}
+    bspwm_window_edit --focus {west,south,north,east}
 
 alt + ctrl + {h,j,k,l}
-    $HOME/.config/bspwm/scripts/window_edit --resize {west,south,north,east}
+    bspwm_window_edit --resize {west,south,north,east}
 
 alt + ctrl + {Left,Down,Up,Right}
-    $HOME/.config/bspwm/scripts/window_edit --resize {west,south,north,east}
+    bspwm_window_edit --resize {west,south,north,east}
 
 alt + space
-    $HOME/.config/bspwm/scripts/window_edit --focus-state
+    bspwm_window_edit --focus-state
 
 alt + shift + {h,j,k,l}
-    $HOME/.config/bspwm/scripts/window_edit --move {west,south,north,east} 
+    bspwm_window_edit --move {west,south,north,east} 
 
 alt + shift + {Left,Down,Up,Right}
-    $HOME/.config/bspwm/scripts/window_edit --move {west,south,north,east} 
+    bspwm_window_edit --move {west,south,north,east} 
 
 alt + Tab
     bspc desktop -f last.occupied

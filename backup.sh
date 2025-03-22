@@ -21,7 +21,6 @@ copy_dir() {
 copy_file "$HOME/.config/tmux/tmux.conf" "$config_dir/tmux/"
 copy_file "$HOME/.librewolf/librewolf.overrides.cfg" "$extra_dir"
 copy_file "/etc/X11/xorg.conf" "$extra_dir"
-copy_file "$HOME/.config/tmux/tmux-sessionizer" "$config_dir/tmux/"
 copy_file "$HOME/.config/starship.toml" "$config_dir/"
 copy_file "$HOME/.fonts.conf" "$main_dir/"
 copy_file "$HOME/.bashrc" "$main_dir/"
@@ -29,6 +28,7 @@ copy_file "$HOME/.Xresources" "$main_dir/"
 copy_file "$HOME/.config/gtk-3.0/settings.ini" "$config_dir/gtk-3.0/"
 
 # Copy configuration directories
+copy_dir "$HOME/.local/bin/" "$main_dir/bin/"
 copy_dir "$HOME/.config/alacritty/" "$config_dir/alacritty/"
 copy_dir "$HOME/.config/lemonbar/" "$config_dir/lemonbar/"
 copy_dir "$HOME/.config/lf/" "$config_dir/lf/"

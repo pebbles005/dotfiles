@@ -3,12 +3,12 @@
 xrandr --output $(xrandr | grep ' connected' | awk '{print $1}' | head -n 1) --scale 0.75x0.75 &
 setxkbmap -option "caps:swapescape" &
 pkill -x lemonbar
-$HOME/.config/lemonbar/panel &
+lemonbar-panel &
 redshift -x && redshift -P -O 4800 &
 pgrep -x sxhkd >/dev/null || sxhkd && pkill -USR1 -x sxhkd &
 feh --no-fehbg --bg-fill $HOME/Pictures/eva.jpg &
-pkill -f $HOME/.config/bspwm/scripts/fullscreen_toggle
-$HOME/.config/bspwm/scripts/fullscreen_toggle &
+pkill -f bspwm_fullscreen_toggle_state_listen
+bspwm_fullscreen_toggle_state_listen &
 pkill -x picom
 picom &
 xsetroot -cursor_name left_ptr &

@@ -51,32 +51,57 @@ update_grub() {
     FONT_FILE="/etc/default/console-setup"
     echo "Updating TTY font size to 16x32..."
 
-    if grep -q '^FONTSIZE=' "$FONT_FILE"; then
-        sudo sed -i 's/^FONTSIZE=.*/FONTSIZE="16x32"/' "$FONT_FILE"
+    # Check if the FONTSIZE is already set correctly
+    if grep -q '^FONTSIZE="16x32"$' "$FONT_FILE"; then
+        echo "FONTSIZE is already set to 16x32. Skipping update."
     else
-        echo 'FONTSIZE="16x32"' | sudo tee -a "$FONT_FILE"
+        if grep -q '^FONTSIZE=' "$FONT_FILE"; then
+            sudo sed -i 's/^FONTSIZE=.*/FONTSIZE="16x32"/' "$FONT_FILE"
+        else
+            echo 'FONTSIZE="16x32"' | sudo tee -a "$FONT_FILE"
+        fi
     fi
 
     # Remove splash screen in /etc/default/grub
     GRUB_FILE="/etc/default/grub"
     echo "Removing splash screen settings from GRUB..."
 
-    sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT=/' "$GRUB_FILE"
+    if grep -q '^GRUB_CMDLINE_LINUX_DEFAULT=""$' "$GRUB_FILE"; then
+        echo "GRUB_CMDLINE_LINUX_DEFAULT is already empty. Skipping update."
+    else
+        sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT=""/' "$GRUB_FILE"
+    fi
 
-    # Update GRUB configuration
-    echo "Updating GRUB configuration..."
-    sudo update-grub
+    # Update GRUB configuration only if changes were made
+    if grep -q '^FONTSIZE="16x32"$' "$FONT_FILE" && grep -q '^GRUB_CMDLINE_LINUX_DEFAULT=""$' "$GRUB_FILE"; then
+        echo "No changes were made, Skipping GRUB update."
+    else
+        echo "Updating GRUB configuration..."
+        sudo update-grub
+        echo "Done! Please reboot to apply the changes."
+    fi
+}
 
-    echo "Done! Please reboot to apply the changes."
+add_user_to_video_group() {
+    if id -nG "$USER" | grep -qw "video"; then
+        echo "User $USER is already in the video group. Skipping..."
+    else
+        echo "Adding $USER to the video group..."
+        sudo usermod -a -G video "$user"
+        echo "User $USER has been added to the video group."
+        echo "reboot to view changes"
+    fi
 }
 
 # Begin the restore process
 restore_file "$main_dir/.bashrc" "$HOME/.bashrc"
 restore_file "$main_dir/.Xresources" "$HOME/.Xresources"
 restore_file "$main_dir/.fonts.conf" "$HOME/.fonts.conf"
+restore_file "$main_dir/.config/starship.toml" "$HOME/.config/starship.toml"
 restore_file "$main_dir/extra/xorg.conf" "/etc/X11/"
 restore_file "$main_dir/extra/librewolf.overrides.cfg" "$HOME/.librewolf/"
 
+restore_dir "$main_dir/bin/" "$HOME/.local/bin/"
 restore_dir "$main_dir/.config/gtk-3.0/" "$HOME/.config/gtk-3.0/"
 restore_dir "$main_dir/.config/tmux/" "$HOME/.config/tmux/"
 restore_dir "$main_dir/.config/alacritty/" "$HOME/.config/alacritty/"
@@ -91,16 +116,13 @@ restore_dir "$main_dir/.config/bspwm/" "$HOME/.config/bspwm/"
 restore_dir "$main_dir/.config/picom/" "$HOME/.config/picom/"
 restore_dir "$main_dir/.config/sxhkd/" "$HOME/.config/sxhkd/"
 restore_dir "$main_dir/.config/htop/" "$HOME/.config/htop/"
-
-restore_file "$main_dir/.config/starship.toml" "$HOME/.config/starship.toml"
-
 restore_dir "$main_dir/fonts/" "$HOME/.local/share/fonts/"
 
 # Sync Pictures and extra directories without deleting other files
 sync_dir_content "$main_dir/Pictures" "$HOME/Pictures"
 
 # Command to enable brightness control logout login to take effect
-sudo usermod -a -G video ${USER}
+add_user_to_video_group
 
 # updating grub config
 update_grub
