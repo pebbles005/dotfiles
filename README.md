@@ -45,6 +45,7 @@
 - bc
 - nemo
 - ncal
+- lftp
 
 ## optional prerequisites
 

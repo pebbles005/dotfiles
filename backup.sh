@@ -1,11 +1,10 @@
 #!/bin/sh
 main_dir="$HOME/dotfiles"
 config_dir="$main_dir/.config"
-fonts_dir="$main_dir/fonts"
 extra_dir="$main_dir/extra"
 
 # Create necessary directories if they don't exist
-mkdir -p "$config_dir" "$fonts_dir" "$extra_dir"
+mkdir -p "$config_dir" "$extra_dir"
 
 # Function to copy single files if they exist
 copy_file() {
@@ -41,4 +40,3 @@ copy_dir "$HOME/.config/bspwm/" "$config_dir/bspwm/"
 copy_dir "$HOME/.config/picom/" "$config_dir/picom/"
 copy_dir "$HOME/.config/sxhkd/" "$config_dir/sxhkd/"
 copy_dir "$HOME/.config/htop/" "$config_dir/htop/"
-copy_dir "$HOME/.local/share/fonts/" "$fonts_dir/"

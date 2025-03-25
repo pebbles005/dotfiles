@@ -116,7 +116,6 @@ restore_dir "$main_dir/.config/bspwm/" "$HOME/.config/bspwm/"
 restore_dir "$main_dir/.config/picom/" "$HOME/.config/picom/"
 restore_dir "$main_dir/.config/sxhkd/" "$HOME/.config/sxhkd/"
 restore_dir "$main_dir/.config/htop/" "$HOME/.config/htop/"
-restore_dir "$main_dir/fonts/" "$HOME/.local/share/fonts/"
 
 # Sync Pictures and extra directories without deleting other files
 sync_dir_content "$main_dir/Pictures" "$HOME/Pictures"
