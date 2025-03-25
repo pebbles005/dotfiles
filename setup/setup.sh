@@ -114,6 +114,8 @@ restore_dir "$main_dir/.config/sxiv/" "$HOME/.config/sxiv/"
 restore_dir "$main_dir/.config/rofi/" "$HOME/.config/rofi/"
 restore_dir "$main_dir/.config/bspwm/" "$HOME/.config/bspwm/"
 restore_dir "$main_dir/.config/picom/" "$HOME/.config/picom/"
+restore_dir "$main_dir/.config/mpd/" "$HOME/.config/mpd/"
+restore_dir "$main_dir/.config/ncmpcpp/" "$HOME/.config/ncmpcpp/"
 restore_dir "$main_dir/.config/sxhkd/" "$HOME/.config/sxhkd/"
 restore_dir "$main_dir/.config/htop/" "$HOME/.config/htop/"
 

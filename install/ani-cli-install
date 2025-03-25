@@ -1,5 +1,0 @@
-#!/bin/sh
-
-sudo nala install -y grep sed curl mpv aria2 yt-dlp ffmpeg
-git clone https://github.com/pystardust/ani-cli $HOME/Github/ani-cli
-sudo cp $HOME/Github/ani-cli/ani-cli -r /usr/bin/ani-cli

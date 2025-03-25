@@ -46,6 +46,8 @@
 - nemo
 - ncal
 - lftp
+- ncmcpp
+- mpd
 
 ## optional prerequisites
 

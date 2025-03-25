@@ -1,0 +1,7 @@
+#!/bin/sh
+
+mpd 
+ncmpcpp
+pkill -x mpd
+
+
