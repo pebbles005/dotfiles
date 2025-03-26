@@ -7,15 +7,12 @@
     indicate_hidden = yes
     shrink = no
     notification_height = 0
-    separator_color = auto
-    gap_size = 4
     padding = 14
     horizontal_padding = 14
     frame_width = 1
     frame_color = "#88C0D0"
     brackground = "#191919"
     font = "CaskaydiaMono Nerd Font Bold 14"
-    separator_color = transparent
     sort = yes
     idle_threshold = 120
     line_height = 0
