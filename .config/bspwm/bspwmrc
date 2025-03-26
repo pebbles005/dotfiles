@@ -7,10 +7,6 @@ lemonbar-panel &
 redshift -x && redshift -P -O 4800 &
 pgrep -x sxhkd >/dev/null || sxhkd && pkill -USR1 -x sxhkd &
 feh --no-fehbg --bg-fill $HOME/Pictures/eva.jpg &
-pkill -f bspwm_fullscreen_toggle_state_listen
-bspwm_fullscreen_toggle_state_listen &
-pkill -x picom
-picom &
 xsetroot -cursor_name left_ptr &
 xset s off -dpms &
 

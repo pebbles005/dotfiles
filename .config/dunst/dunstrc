@@ -6,7 +6,6 @@
     offset = 20x20
     indicate_hidden = yes
     shrink = no
-    transparency = 20
     notification_height = 0
     separator_color = auto
     gap_size = 4
