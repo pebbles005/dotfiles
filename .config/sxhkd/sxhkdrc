@@ -48,7 +48,7 @@ alt + shift + q
     bspc quit
     
 alt + {x,q}
-	{bspwm_node_remove_event,bspc node -c }
+	bspc node {-k,-c}
 
 alt + {h,j,k,l}
     bspwm_window_edit --focus {west,south,north,east}
