@@ -6,7 +6,7 @@ pkill -x lemonbar
 lemonbar-panel &
 redshift -x && redshift -P -O 4800 &
 pgrep -x sxhkd >/dev/null || sxhkd && pkill -USR1 -x sxhkd &
-feh --no-fehbg --bg-fill $HOME/Pictures/aesthetic-anime-02.jpg &
+feh --no-fehbg --bg-fill $HOME/Pictures/aesthetic-anime.jpg &
 xsetroot -cursor_name left_ptr &
 xset s off -dpms &
 

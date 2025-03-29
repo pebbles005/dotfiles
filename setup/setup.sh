@@ -66,20 +66,15 @@ update_grub() {
     GRUB_FILE="/etc/default/grub"
     echo "Removing splash screen settings from GRUB..."
 
-    if grep -q '^GRUB_CMDLINE_LINUX_DEFAULT=""$' "$GRUB_FILE"; then
+    if grep -q '^GRUB_CMDLINE_LINUX_DEFAULT=[[:space:]]*$' "$GRUB_FILE"; then
         echo "GRUB_CMDLINE_LINUX_DEFAULT is already empty. Skipping update."
     else
-        sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT=""/' "$GRUB_FILE"
+        sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT=/' "$GRUB_FILE"
     fi
 
-    # Update GRUB configuration only if changes were made
-    if grep -q '^FONTSIZE="16x32"$' "$FONT_FILE" && grep -q '^GRUB_CMDLINE_LINUX_DEFAULT=""$' "$GRUB_FILE"; then
-        echo "No changes were made, Skipping GRUB update."
-    else
-        echo "Updating GRUB configuration..."
-        sudo update-grub
-        echo "Done! Please reboot to apply the changes."
-    fi
+    echo "Updating GRUB configuration..."
+    sudo update-grub
+    echo "Done! Please reboot to apply the changes."
 }
 
 add_user_to_video_group() {
@@ -87,7 +82,7 @@ add_user_to_video_group() {
         echo "User $USER is already in the video group. Skipping..."
     else
         echo "Adding $USER to the video group..."
-        sudo usermod -a -G video "$user"
+        sudo usermod -a -G video "$USER"
         echo "User $USER has been added to the video group."
         echo "reboot to view changes"
     fi
