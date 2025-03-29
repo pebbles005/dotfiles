@@ -1,0 +1,16 @@
+#!/bin/sh
+
+$HOME/dotfiles/setup/initial-install
+$HOME/dotfiles/setup/ani-cli-install
+$HOME/dotfiles/setup/font-install
+$HOME/dotfiles/setup/fzf-install
+$HOME/dotfiles/setup/lemonbar-install
+$HOME/dotfiles/setup/librewolf-install
+$HOME/dotfiles/setup/node-install
+$HOME/dotfiles/setup/neovim-install
+$HOME/dotfiles/setup/spotdl-install
+$HOME/dotfiles/setup/starship-install
+$HOME/dotfiles/setup/tpp-install
+
+
+
