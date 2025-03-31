@@ -52,33 +52,33 @@ while read -r line; do
                     ;;
                 F*)
                     FG=$COLOR_DEFAULT_BG
-                    BG=$COLOR_DEFAULT_BG_ALT
+                    BG=$COLOR_DEFAULT_BG_FOCUSED
                     ;;
                 o*)
-                    FG=$COLOR_DEFAULT_FG
+                    FG=$COLOR_DEFAULT_FG_MUTED
                     BG=$COLOR_DEFAULT_BG
                     ;;
                 O*)
                     if [ "$on_focused_monitor" ]; then
                         # focused occupied desktop
                         FG=$COLOR_DEFAULT_BG
-                        BG=$COLOR_DEFAULT_BG_ALT
+                        BG=$COLOR_DEFAULT_BG_FOCUSED
                     else
                         # active occupied desktop
-                        FG=$COLOR_DEFAULT_FG
+                        FG=$COLOR_DEFAULT_FG_MUTED
                         BG=$COLOR_DEFAULT_BG
                     fi
                     ;;
                 u*)
                     # urgent desktop
-                    FG=$COLOR_URGENT_FG
-                    # BG=$COLOR_URGENT_BG
+                    FG=$COLOR_DEFAULT_FG
+                    BG=$COLOR_URGENT_BG
                     ;;
                 U*)
                     if [ "$on_focused_monitor" ]; then
                         # focused urgent desktop
-                        FG=$COLOR_URGENT_FG
-                        BG=$COLOR_DEFAULT_BG_ALT
+                        FG=$COLOR_DEFAULT_BG
+                        BG=$COLOR_URGENT_BG
                     else
                         # active urgent desktop
                         FG=$COLOR_DEFAULT_FG

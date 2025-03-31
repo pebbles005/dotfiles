@@ -1,16 +1,13 @@
 super + Up
     pactl set-sink-mute @DEFAULT_SINK@ false; pactl set-sink-volume @DEFAULT_SINK@ +5%; \
     VOLUME=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1); \
-    [ "$VOLUME" -gt 100 ] && VOLUME=100 && pactl set-sink-volume @DEFAULT_SINK@ 100%; \
+    [ "$VOLUME" -gt 150 ] && VOLUME=150 && pactl set-sink-volume @DEFAULT_SINK@ 150%; \
     notify-send --hint=string:x-dunst-stack-tag:volume-status "Volume is at $VOLUME%"
 
 super + Down
     pactl set-sink-mute @DEFAULT_SINK@ false; pactl set-sink-volume @DEFAULT_SINK@ -5%; \
     VOLUME=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1); \
     notify-send --hint=string:x-dunst-stack-tag:volume-status "Volume is at $VOLUME%"
-
-super + m
-    pactl set-source-mute @DEFAULT_SOURCE@ toggle; [ $(pactl get-source-mute @DEFAULT_SOURCE@ | grep -oE "(yes|no)") = "yes" ] && (pactl set-sink-mute @DEFAULT_SINK@ true; notify-send --hint=string:x-dunst-stack-tag:volume-mic-mute-status "Volume and mic is muted") || (pactl set-sink-mute @DEFAULT_SINK@ false; notify-send --hint=string:x-dunst-stack-tag:volume-mic-mute-status "Volume and mic is unmuted")
 
 super + Right
     brightnessctl set +5%; \

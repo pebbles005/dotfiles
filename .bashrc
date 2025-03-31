@@ -53,7 +53,7 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
-fzf_defaults="-i --margin 5% --keep-right --filepath-word --height 100% --scroll-off 0 --info right --no-scrollbar --prompt '▌ ' --color='dark,fg:white,fg+:cyan,bg+:-1,hl:yellow,hl+:yellow,info:black,separator:black,border:black,prompt:magenta,pointer:cyan,marker:cyan,spinner:black'"
+fzf_defaults="-i --margin 5% --keep-right --filepath-word --height 100% --scroll-off 0 --info right --no-scrollbar --prompt '▌ ' --color='dark,fg:bright-black,fg+:green,bg+:-1,hl:yellow,hl+:yellow,info:bright-black,separator:bright-black,border:bright-black,prompt:magenta,pointer:green,marker:green,spinner:bright-black'"
 export FZF_DEFAULT_OPTS="$fzf_defaults"
 export _ZO_FZF_OPTS="$fzf_defaults"
 

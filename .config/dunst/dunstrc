@@ -10,7 +10,7 @@
     padding = 14
     horizontal_padding = 14
     frame_width = 1
-    frame_color = "#88C0D0"
+    frame_color = "#a7c080"
     brackground = "#191919"
     font = "CaskaydiaMono Nerd Font Bold 14"
     sort = yes
@@ -48,17 +48,17 @@
 
 [urgency_low]
     background = "#191919"
-    foreground = "#E5E9F0"
+    foreground = "#DBDBDB"
     timeout = 3
 
 [urgency_normal]
     background = "#191919"
-    foreground = "#E5E9F0"
+    foreground = "#DBDBDB"
     timeout = 3
 
 [urgency_critical]
     background = "#191919"
-    foreground = "#E5E9F0"
-    frame_color = "#E06C75"
+    foreground = "#DBDBDB"
+    frame_color = "#e67e80"
     timeout = 3
 

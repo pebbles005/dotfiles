@@ -1,6 +1,6 @@
 [colors.primary]
-foreground = "#E5E9F0"
-background = "#191919"
+background = '#191919'
+foreground = '#DBDBDB'
 
 [colors.search.matches]
 foreground = "CellBackground"
@@ -11,28 +11,27 @@ foreground = "CellBackground"
 background = "CellForeground"
 
 [colors.footer_bar]
-foreground = "#E5E9F0"
-background = "#191919"
+background = '#191919'
+foreground = '#DBDBDB'
 
+# Normal colors
 [colors.normal]
-black = "#61677a"
-red = "#E06C75"
-green = "#9EC183"
-yellow = "#EBCB8B"
-blue = "#81A1C1"
-magenta = "#B988B0"
-cyan = "#88C0D0"
-white = "#E5E9F0"
+black   = '#191919'
+red     = '#e67e80'
+green   = '#a7c080'
+yellow  = '#dbbc7f'
+blue    = '#7fbbb3'
+magenta = '#d699b6'
+cyan    = '#83c092'
+white   = '#DBDBDB'
 
+# Bright colors
 [colors.bright]
-black = "#191919"
-red = "#E06C75"
-green = "#9EC183"
-yellow = "#EBCB8B"
-blue = "#81A1C1"
-magenta = "#B988B0"
-cyan = "#88C0D0"
-white = "#E5E9F0"
-
-
-
+black   = '#7F8487'
+red     = '#e67e80'
+green   = '#a7c080'
+yellow  = '#dbbc7f'
+blue    = '#7fbbb3'
+magenta = '#d699b6'
+cyan    = '#83c092'
+white   = '#DBDBDB'

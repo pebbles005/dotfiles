@@ -11,17 +11,17 @@ return {
 		},
 		opts = {
 			defaults = {
+				border = false,
 				preview = false,
 				layout_config = {
 					preview_cutoff = 80,
 					preview_width = 0.5,
-					height = 0.8,
+					height = 0.6,
 				},
 				file_ignore_patterns = {
 					"node_modules",
 					"%.git",
 				},
-				borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 			},
 			pickers = {
 				find_files = {
@@ -86,12 +86,6 @@ return {
 				})
 			end, { desc = "Search current Word" })
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Search by Grep" })
-			vim.keymap.set(
-				"n",
-				"<leader>/",
-				builtin.current_buffer_fuzzy_find,
-				{ desc = "Fuzzily search in current buffer" }
-			)
 			vim.keymap.set("n", "<leader>f/", function()
 				builtin.live_grep({
 					grep_open_files = true,
