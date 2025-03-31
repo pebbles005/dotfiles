@@ -58,7 +58,7 @@ export FZF_DEFAULT_OPTS="$fzf_defaults"
 export _ZO_FZF_OPTS="$fzf_defaults"
 
 # GENERAL ALIAS'S
-alias cat='batcat --theme=Nord'
+alias cat='batcat --theme=gruvbox-dark'
 alias cal="ncal -C"
 alias cp='cp -i -v'
 alias mv='mv -i -v'
@@ -137,56 +137,6 @@ ftext() {
     # optional: -l only print filenames and not the matching lines ex. grep -irl "$1" *
     grep -iIHrn --color=always "$1" . | less -r
 }
-
-# open() {
-#     f="$1"
-#     needs_sudo=false
-#
-#     if [ ! -w "$f" ]; then
-#         needs_sudo=true
-#     fi
-#
-#     run_cmd() {
-#         if [ "$needs_sudo" = true ]; then
-#             sudo "$@"
-#         else
-#             "$@"
-#         fi
-#     }
-#
-#     case $(file --mime-type "$f" -bL) in
-#     text/* | application/json* | application/x-empty | application/x-executable | application/x-shellscript | application/x-desktop | inode/x-empty)
-#         run_cmd nvim "$f"
-#         ;;
-#     image/*)
-#         run_cmd sxiv "$f"
-#         ;;
-#     video/* | audio/*)
-#         run_cmd mpv "$f"
-#         ;;
-#     application/pdf)
-#         run_cmd evince "$f"
-#         ;;
-#     application/zip | application/x-tar | application/x-rar | application/x-7z-compressed | application/gzip | application/x-bzip2 | application/x-compress)
-#         run_cmd file-roller "$f"
-#         ;;
-#     application/msword | application/vnd.openxmlformats-officedocument.wordprocessingml.document)
-#         run_cmd libreoffice --writer "$f"
-#         ;;
-#     application/vnd.ms-excel | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet)
-#         run_cmd libreoffice --calc "$f"
-#         ;;
-#     application/vnd.ms-powerpoint | application/vnd.openxmlformats-officedocument.presentationml.presentation)
-#         run_cmd libreoffice --impress "$f"
-#         ;;
-#     application/octet-stream)
-#         run_cmd xdg-open "$f"
-#         ;;
-#     *)
-#         run_cmd xdg-open "$f"
-#         ;;
-#     esac
-# }
 
 fd() {
     local dir="${1:-.}"

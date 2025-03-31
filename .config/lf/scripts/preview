@@ -76,7 +76,7 @@ case "$(basename "$file" | tr '[A-Z]' '[a-z]')" in
     fi
     ;;
 *)
-    batcat --paging=never --terminal-width="$w" --color=always --theme=Nord "$file"
+    batcat --paging=never --terminal-width="$w" --color=always --theme=gruvbox-dark "$file"
     ;;
 esac
 file -Lb -- "$file" | fold -s -w "$width"
