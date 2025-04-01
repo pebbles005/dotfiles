@@ -31,6 +31,7 @@ vim.o.timeoutlen = 10000
 vim.o.linebreak = true
 vim.o.winborder = "single"
 vim.diagnostic.config({ virtual_text = true })
+vim.cmd.colorscheme("base16")
 
 -- Custom keybinds
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })

@@ -58,7 +58,7 @@ export FZF_DEFAULT_OPTS="$fzf_defaults"
 export _ZO_FZF_OPTS="$fzf_defaults"
 
 # GENERAL ALIAS'S
-alias cat='batcat --theme=gruvbox-dark'
+alias cat='batcat --theme=base16'
 alias cal="ncal -C"
 alias cp='cp -i -v'
 alias mv='mv -i -v'

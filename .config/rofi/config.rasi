@@ -13,8 +13,8 @@ configuration{
 * {
     foreground: #7F8487;
     background: #191919;
-    magenta: #d699b6;
-    green: #a7c080;
+    magenta: #E6B2BA;
+    green: #99bbaa;
     background-color:   @background;
     text-color:         @foreground;
     font: "CaskaydiaMono Nerd Font Bold 13";
