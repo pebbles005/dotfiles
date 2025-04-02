@@ -7,7 +7,7 @@ local colors = {
 	base05 = "#DBDBDB", -- Default Foreground, Caret, Delimiters, Operators
 	base06 = "#e8e8e8", -- Light Foreground (Not often used)
 	base07 = "#f8f8f8", -- Light Background (Not often used)
-	base08 = "#ab4642", -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+	base08 = "#E6B2BA", -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
 	base09 = "#dbbc7f", -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
 	base0A = "#dbbc7f", -- Classes, Markup Bold, Search Text Background
 	base0B = "#99bbaa", -- Strings, Inherited Class, Markup Code
@@ -47,4 +47,5 @@ highlight("TelescopeNormal", colors.base03, "NONE")
 highlight("TelescopeSelection", colors.base0B, "NONE")
 highlight("Pmenu", colors.base03, "NONE")
 highlight("PmenuSel", colors.base0B, colors.base00)
+highlight("OilDir", colors.base0D, "NONE")
 return colors
