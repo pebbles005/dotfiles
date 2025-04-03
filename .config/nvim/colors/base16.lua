@@ -19,10 +19,6 @@ local colors = {
 
 vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
 vim.cmd("highlight NormalFloat guibg=NONE ctermbg=NONE")
-vim.cmd("highlight TelescopeBorder guibg=NONE ctermbg=NONE guifg=NONE ctermfg=NONE")
-vim.cmd("highlight TelescopePromptBorder guibg=NONE ctermbg=NONE guifg=NONE ctermfg=NONE")
-vim.cmd("highlight TelescopeResultsBorder guibg=NONE ctermbg=NONE guifg=NONE ctermfg=NONE")
-vim.cmd("highlight TelescopePreviewBorder guibg=NONE ctermbg=NONE guifg=NONE ctermfg=NONE")
 
 local function highlight(group, fg, bg)
 	local fg_color = fg and "guifg=" .. fg or ""
@@ -43,8 +39,6 @@ highlight("Statement", colors.base08, "NONE")
 highlight("@property", colors.base0D, "NONE")
 highlight("StatusLine", colors.base00, colors.base0B)
 highlight("VertSplit", colors.base05, "NONE")
-highlight("TelescopeNormal", colors.base03, "NONE")
-highlight("TelescopeSelection", colors.base0B, "NONE")
 highlight("Pmenu", colors.base03, "NONE")
 highlight("PmenuSel", colors.base0B, colors.base00)
 highlight("OilDir", colors.base0D, "NONE")
