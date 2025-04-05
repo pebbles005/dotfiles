@@ -7,5 +7,12 @@
       "};"
     ],
     "description": "Creates an arrow function"
+  },
+  "UseState Hook": {
+    "prefix": "useSnippet",
+    "body": [
+      "const [${1:state}, set${2:State}] = useState(${3:initialValue});"
+    ],
+    "description": "React useState hook snippet"
   }
 }
