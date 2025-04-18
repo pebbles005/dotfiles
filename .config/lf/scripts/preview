@@ -46,7 +46,7 @@ case "$(basename "$file" | tr '[A-Z]' '[a-z]')" in
 *.doc) catdoc "$file" ;;
 *.docx) docx2txt "$file" ;;
 *.xls | *.xlsx)
-    ssconvert --export-type=Gnumeric_stf:stf_csv "$file" "fd://1" | batcat --paging=never --terminal-width="$w" --color=always --theme=base16 --language=csv
+    ssconvert --export-type=Gnumeric_stf:stf_csv "$file" "fd://1" | bat --paging=never --terminal-width="$w" --color=always --theme=base16 --language=csv
     ;;
 *.iso) isoinfo -d -i "$file" ;;
 *.wav | *.mp3 | *.flac | *.m4a | *.wma | *.ape | *.ac3 | *.og[agx] | *.spx | *.opus | *.as[fx] | *.mka)
@@ -76,7 +76,7 @@ case "$(basename "$file" | tr '[A-Z]' '[a-z]')" in
     fi
     ;;
 *)
-    batcat --paging=never --terminal-width="$w" --color=always --theme=base16 "$file"
+    bat --paging=never --terminal-width="$w" --color=always --theme=base16 "$file"
     ;;
 esac
 file -Lb -- "$file" | fold -s -w "$width"

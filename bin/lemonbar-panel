@@ -66,7 +66,7 @@ network_monitor() {
     # Check both Ethernet and Wi-Fi states
     print_network_status() {
         eth_state=$(cat /sys/class/net/enp6s0f1/operstate 2>/dev/null || echo "down")
-        wifi_state=$(cat /sys/class/net/wlp0s20f3/operstate 2>/dev/null || echo "down")
+        wifi_state=$(cat /sys/class/net/wlan0/operstate 2>/dev/null || echo "down")
         ssid=$(iwgetid -r || echo "Disconnected")
 
         if [ "$eth_state" = "up" ]; then

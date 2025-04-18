@@ -19,10 +19,11 @@ copy_dir() {
 # Copy individual configuration files
 copy_file "$HOME/.config/tmux/tmux.conf" "$config_dir/tmux/"
 copy_file "$HOME/.librewolf/librewolf.overrides.cfg" "$extra_dir"
-copy_file "/etc/X11/xorg.conf" "$extra_dir"
+copy_file "/etc/X11/xorg.conf.d/99-input.conf" "$extra_dir"
 copy_file "$HOME/.config/starship.toml" "$config_dir/"
 copy_file "$HOME/.fonts.conf" "$main_dir/"
 copy_file "$HOME/.bashrc" "$main_dir/"
+copy_file "$HOME/.Xmodmap" "$main_dir/"
 copy_file "$HOME/.Xresources" "$main_dir/"
 copy_file "$HOME/.config/gtk-3.0/settings.ini" "$config_dir/gtk-3.0/"
 
