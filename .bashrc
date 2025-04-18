@@ -56,10 +56,10 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 fzf_defaults="-i --margin 5% --keep-right --filepath-word --height 100% --scroll-off 0 --info right --no-scrollbar --prompt '▌ ' --color='dark,fg:bright-black,fg+:green,bg+:-1,hl:yellow,hl+:yellow,info:bright-black,separator:bright-black,border:bright-black,prompt:magenta,pointer:green,marker:green,spinner:bright-black'"
 export FZF_DEFAULT_OPTS="$fzf_defaults"
 export _ZO_FZF_OPTS="$fzf_defaults"
+export GTK_THEME="adw-gtk3-dark"
 
 # GENERAL ALIAS'S
-alias cat='batcat --theme=base16'
-alias cal="ncal -C"
+alias cat='bat --theme=base16'
 alias cp='cp -i -v'
 alias mv='mv -i -v'
 alias rm='rm -i -v'
@@ -102,30 +102,6 @@ alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
 alias gs='git status'
 
-# SPECIAL FUNCTIONS
-extract() {
-    for archive in "$@"; do
-        if [ -f "$archive" ]; then
-            case $archive in
-            *.zip) unzip $archive ;;
-            *.tar) tar xvf $archive ;;
-            *.rar) rar x $archive ;;
-            *.7z) 7z x $archive ;;
-            *.gz) gunzip $archive ;;
-            *.bz2) bunzip2 $archive ;;
-            *.tar.bz2) tar xvjf $archive ;;
-            *.tar.gz) tar xvzf $archive ;;
-            *.tbz2) tar xvjf $archive ;;
-            *.tgz) tar xvzf $archive ;;
-            *.Z) uncompress $archive ;;
-            *) echo "don't know how to extract '$archive'..." ;;
-            esac
-        else
-            echo "'$archive' is not a valid file!"
-        fi
-    done
-}
-
 # Searches for text in all files in the current folder
 ftext() {
     # -i case-insensitive
@@ -140,12 +116,12 @@ ftext() {
 
 fd() {
     local dir="${1:-.}"
-    dir=$(fdfind . "$dir" --type d -H -E .git -E node_modules | fzf --border-label="find directory") && cd "${dir#./}"
+    dir=$(command fd . "$dir" --type d -H -E .git -E node_modules | fzf) && cd "${dir#./}"
 }
 
 ff() {
     local file="${1:-.}"
-    file=$(fdfind . "$file" --type f -H -E .git -E node_modules | fzf --border-label="find files") && open "${file#./}"
+    file=$(command fd . "$file" --type f -H -E .git -E node_modules | fzf) && open "${file#./}"
 }
 
 gcom() {
@@ -167,6 +143,6 @@ export PATH=$PATH:"$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bi
 
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
+eval "$(fzf --bash)"
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"

@@ -47,7 +47,7 @@ video/* | audio/*)
     run_sudo nmpv "$f"
     ;;
 application/pdf)
-    run_sudo evince "$f"
+    run_sudo zathura "$f"
     ;;
 application/zip | application/x-tar | application/x-rar | application/x-7z-compressed | application/gzip | application/x-bzip2 | application/x-compress)
     run_sudo file-roller "$f"

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-sudo nala install -y libxcb-xinerama0-dev libxcb-randr0-dev libxft-dev libx11-dev libx11-xcb-dev
-git clone https://gitlab.com/protesilaos/lemonbar-xft $HOME/Github/lemonbar/
-cd $HOME/Github/lemonbar/
-sudo make install
-cd $OLDPWD
