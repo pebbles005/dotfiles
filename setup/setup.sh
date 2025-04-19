@@ -60,6 +60,19 @@ add_user_to_video_group() {
     fi
 }
 
+switch_gpu() {
+    # Get the current GPU mode
+    current_mode=$(optimus-manager --print-mode | awk -F': ' '{print $2}')
+
+    # Check if already using NVIDIA
+    if [ "$current_mode" != "nvidia" ]; then
+        echo "Switching to NVIDIA mode..."
+        sudo optimus-manager --no-confirm --switch nvidia
+    else
+        echo "Already in NVIDIA mode. No action taken."
+    fi
+}
+
 # Begin the restore process
 restore_file "$main_dir/.bashrc" "$HOME/.bashrc"
 restore_file "$main_dir/.Xmodmap" "$HOME/.Xmodmap"
@@ -99,6 +112,6 @@ grep -q '^FONT=' /etc/vconsole.conf || echo 'FONT=ter-v32n' | sudo tee -a /etc/v
 sudo systemctl enable bluetooth.service
 
 # switching to nvidia
-sudo optimus-manager --no-confirm --switch nvidia
+switch_gpu
 
 echo "setup have been done."
