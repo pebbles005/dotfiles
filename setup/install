@@ -1,30 +1,34 @@
 #!/bin/sh
 
 # creating nessesery folders
-mkdir -p $HOME/Github/ $HOME/Projects/
+mkdir -p $HOME/Github/ $HOME/Projects/ $HOME/.librewolf/ $HOME/Music/ $HOME/.local/share/fonts/
 
 # installing generic packages
-sudo pacman -Syu --needed --noconfirm dunst alacritty ripgrep xclip rofi bspwm sxhkd feh lf bat mediainfo catdoc docx2txt odt2txt ffmpegthumbnailer imagemagick mpv sxiv zathura zathura-pdf-poppler file-roller redshift tmux scrot brightnessctl zoxide fd htop trash-cli bluez bluez-utils blueman upower iw ffmpeg bc util-linux lftp ncmpcpp mpd starship rsync xorg ueberzug unzip zip nodejs npm nvim pavucontrol fontconfig base-devel git networkmanager perl-file-mimeinfo fzf adw-gtk-theme papirus-icon-theme thunar gnome-disk-utility terminus-font
+sudo pacman -Syu --needed --noconfirm dunst alacritty ripgrep xclip rofi bspwm sxhkd feh lf bat mediainfo catdoc docx2txt odt2txt ffmpegthumbnailer imagemagick mpv sxiv zathura zathura-pdf-poppler file-roller redshift tmux scrot brightnessctl zoxide fd htop trash-cli bluez bluez-utils blueman upower iw ffmpeg bc util-linux lftp ncmpcpp mpd starship rsync xorg ueberzug unzip zip nodejs npm nvim pavucontrol fontconfig base-devel git networkmanager perl-file-mimeinfo fzf adw-gtk-theme papirus-icon-theme thunar gnome-disk-utility terminus-font noto-fonts-cjk noto-fonts-emoji
 
 # Installing yay
-git clone https://aur.archlinux.org/yay.git $HOME/Github/yay
-cd $HOME/Github/yay/
-makepkg -si
-cd $OLDPWD
+git clone https://aur.archlinux.org/yay.git "$HOME/Github/yay"
+(cd "$HOME/Github/yay" && makepkg -si --noconfirm)
 
 yay -Syu --needed --noconfirm ani-cli librewolf-bin lemonbar-xft-git bibata-cursor-theme vesktop-bin
-# /spotdl
 
-#tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# installing eslint globbaly
+npm list -g eslint --depth=0 >/dev/null 2>&1 || sudo npm install -g eslint
 
 #fonts
-mkdir -p ~/.local/share/fonts
-cd ~/.local/share/fonts && rm -rf ~/.local/share/fonts/*
-curl -fLO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.zip
-unzip CascadiaMono.zip
-rm CascadiaMono.zip
-cd $OLDPWD
+rm -rf $HOME/.local/share/fonts/*
+curl -L https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.zip -o $HOME/.local/share/fonts/CascadiaMono.zip
+unzip $HOME/.local/share/fonts/CascadiaMono.zip -d $HOME/.local/share/fonts/
+rm $HOME/.local/share/fonts/CascadiaMono.zip
+
+#spotdl ( aur pkg have issues )
+spotdlurl=$(curl -s https://api.github.com/repos/spotDL/spotify-downloader/releases/latest |
+    grep browser_download_url |
+    grep "spotdl-.*-linux" |
+    cut -d '"' -f 4)
+sudo curl -L "$spotdlurl" -o /usr/bin/spotdl
+sudo chmod +x /usr/bin/spotdl
 
 # Notes :
 # if using vesktop do turn on nodevtoolsswarning in plugins to not signout everytime.
+# spotdl breaks because of null bitrate

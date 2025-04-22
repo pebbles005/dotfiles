@@ -23,12 +23,7 @@ case "$chosen" in
     reboot
     ;;
 "Log Out")
-    if [ "$GDMSESSION" == "bspwm" ]; then
-        bspc quit
-    else
-        notify-send "doesnt works"
-        # pkill x
-    fi
+    bspc quit
     ;;
 *)
     exit 1

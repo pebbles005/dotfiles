@@ -67,7 +67,6 @@ alias mkdir='mkdir -p -v'
 alias ps='ps auxf'
 alias ping='ping -c 10'
 alias cls='clear'
-alias nala='sudo nala'
 alias docker='sudo docker'
 alias vi='nvim'
 alias svi='sudo nvim'
@@ -144,5 +143,3 @@ export PATH=$PATH:"$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bi
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 eval "$(fzf --bash)"
-
-. "$HOME/.cargo/env"
