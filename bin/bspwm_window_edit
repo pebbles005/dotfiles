@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 action=$1
 direction=${2:-west}

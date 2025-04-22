@@ -36,6 +36,8 @@ if [[ $iatest -gt 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 stty werase undef
 bind '"\C-w": backward-kill-word'
+bind '"\C-f": forward-word'
+bind '"\C-b": backward-word'
 
 # Set the default editor
 export EDITOR=nvim
@@ -67,7 +69,6 @@ alias mkdir='mkdir -p -v'
 alias ps='ps auxf'
 alias ping='ping -c 10'
 alias cls='clear'
-alias nala='sudo nala'
 alias docker='sudo docker'
 alias vi='nvim'
 alias svi='sudo nvim'
@@ -101,6 +102,7 @@ alias countsize="du -sh ."
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
 alias gs='git status'
+alias xcopy='xclip -selection clipboard && (sleep 10 && xclip -selection clipboard /dev/null) &'
 
 # Searches for text in all files in the current folder
 ftext() {
@@ -144,5 +146,3 @@ export PATH=$PATH:"$HOME/.local/bin:$HOME/.cargo/bin:/var/lib/flatpak/exports/bi
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 eval "$(fzf --bash)"
-
-. "$HOME/.cargo/env"
