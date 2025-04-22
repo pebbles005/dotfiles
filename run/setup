@@ -1,7 +1,5 @@
 #!/bin/sh
 main_dir="$HOME/dotfiles"
-#librewolf directory incase it doesnt exist
-mkdir -p $HOME/.librewolf/
 
 # Helper function to create parent directories if missing
 ensure_dir() {
@@ -79,20 +77,19 @@ restore_file "$main_dir/.Xmodmap" "$HOME/.Xmodmap"
 restore_file "$main_dir/.Xresources" "$HOME/.Xresources"
 restore_file "$main_dir/.fonts.conf" "$HOME/.fonts.conf"
 restore_file "$main_dir/.config/starship.toml" "$HOME/.config/starship.toml"
-restore_file "$main_dir/extra/99-input.conf" "/etc/X11/xorg.conf.d/"
-restore_file "$main_dir/extra/librewolf.overrides.cfg" "$HOME/.librewolf/"
+restore_file "$main_dir/.librewolf/librewolf.overrides.cfg" "$HOME/.librewolf/"
+restore_file "$main_dir/etc/X11/xorg.conf.d/99-input.conf" "/etc/X11/xorg.conf.d/"
+restore_file "$main_dir/etc/ly/config.ini" "/etc/ly/config.ini"
 
 restore_dir "$main_dir/bin/" "$HOME/.local/bin/"
 restore_dir "$main_dir/.config/gtk-3.0/" "$HOME/.config/gtk-3.0/"
 restore_dir "$main_dir/.config/tmux/" "$HOME/.config/tmux/"
-restore_dir "$main_dir/.config/alacritty/" "$HOME/.config/alacritty/"
 restore_dir "$main_dir/.config/lemonbar/" "$HOME/.config/lemonbar/"
 restore_dir "$main_dir/.config/lf/" "$HOME/.config/lf/"
 restore_dir "$main_dir/.config/dunst/" "$HOME/.config/dunst/"
 restore_dir "$main_dir/.config/nvim/" "$HOME/.config/nvim/"
 restore_dir "$main_dir/.config/mpv/" "$HOME/.config/mpv/"
 restore_dir "$main_dir/.config/sxiv/" "$HOME/.config/sxiv/"
-restore_dir "$main_dir/.config/rofi/" "$HOME/.config/rofi/"
 restore_dir "$main_dir/.config/bspwm/" "$HOME/.config/bspwm/"
 restore_dir "$main_dir/.config/mpd/" "$HOME/.config/mpd/"
 restore_dir "$main_dir/.config/ncmpcpp/" "$HOME/.config/ncmpcpp/"

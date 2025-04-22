@@ -30,8 +30,6 @@ return {
 		vim.keymap.set("n", "<leader>ff", fzf.files)
 		vim.keymap.set("n", "<leader><leader>", fzf.buffers)
 		vim.keymap.set("n", "<leader>fg", fzf.live_grep_native)
-		vim.keymap.set("n", "<leader>gc", fzf.git_commits)
-		vim.keymap.set("n", "<leader>gs", fzf.git_status)
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("fzf-lsp-attach", { clear = true }),
 			callback = function()

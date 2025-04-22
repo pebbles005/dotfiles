@@ -31,6 +31,7 @@ vim.o.timeoutlen = 10000
 vim.o.linebreak = true
 vim.o.winborder = "single"
 vim.diagnostic.config({ virtual_text = true })
+vim.o.statusline = " %<%{len(expand('%')) ? expand('%:~:.') : '[No Name]'} %m %=%y %p%% "
 vim.cmd.colorscheme("base16")
 
 -- Custom keybinds

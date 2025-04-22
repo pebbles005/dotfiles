@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# creating nessesery folders
+mkdir -p $HOME/Github/ $HOME/Projects/ $HOME/.librewolf/ $HOME/Music/ $HOME/Pictures/ $HOME/Videos/ $HOME/.local/share/fonts/
+
+# installing generic packages
+sudo pacman -Syu --needed --noconfirm dunst ripgrep xclip bspwm sxhkd feh lf bat mediainfo catdoc docx2txt odt2txt ffmpegthumbnailer imagemagick mpv sxiv zathura zathura-pdf-poppler file-roller redshift tmux brightnessctl zoxide fd htop trash-cli bluez bluez-utils blueman upower iw ffmpeg bc util-linux lftp ncmpcpp mpd starship rsync xorg ueberzug unzip zip nodejs npm nvim pavucontrol fontconfig base-devel git networkmanager perl-file-mimeinfo fzf adw-gtk-theme papirus-icon-theme thunar gnome-disk-utility terminus-font noto-fonts-cjk noto-fonts-emoji bash-completion ansible pass pass-otp zbar openssh
+
+# Installing yay
+git clone https://aur.archlinux.org/yay.git "$HOME/Github/yay"
+(cd "$HOME/Github/yay" && makepkg -si --noconfirm)
+
+yay -Syu --needed --noconfirm ani-cli librewolf-bin lemonbar-xft-git bibata-cursor-theme vesktop-bin
+
+# Installing st
+sudo pacman -Rc --noconfirm st
+yay -Rc --noconfirm st
+git clone https://github.com/pebbles005/st "$HOME/Github/st"
+(cd "$HOME/Github/st" && sudo make clean install)
+
+# Installing dmenu
+sudo pacman -Rc --noconfirm dmenu
+yay -Rc --noconfirm dmenu
+git clone https://github.com/pebbles005/dmenu "$HOME/Github/dmenu"
+(cd "$HOME/Github/dmenu" && sudo make clean install)
+
+# installing eslint globbaly
+npm list -g eslint --depth=0 >/dev/null 2>&1 || sudo npm install -g eslint
+
+#fonts
+rm -rf $HOME/.local/share/fonts/*
+curl -L https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.zip -o $HOME/.local/share/fonts/CascadiaMono.zip
+unzip $HOME/.local/share/fonts/CascadiaMono.zip -d $HOME/.local/share/fonts/
+rm $HOME/.local/share/fonts/CascadiaMono.zip
+
+#spotdl ( aur pkg have issues )
+spotdlurl=$(curl -s https://api.github.com/repos/spotDL/spotify-downloader/releases/latest |
+    grep browser_download_url |
+    grep "spotdl-.*-linux" |
+    cut -d '"' -f 4)
+sudo curl -L "$spotdlurl" -o /usr/bin/spotdl
+sudo chmod +x /usr/bin/spotdl
+
+# Notes :
+# if using vesktop do turn on nodevtoolsswarning and disable auto update in plugins to not signout everytime.
+# spotdl breaks because of null bitrate

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Ensure a file argument is provided
 if [ -z "$1" ]; then

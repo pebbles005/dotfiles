@@ -14,6 +14,7 @@ set dircounts
 set incsearch
 set ratios "2:3"
 set drawbox
+set hidden
 
 cmd open ${{
     open "$f"
@@ -100,7 +101,7 @@ cmd bulk-rename ${{
 
 map a push :create<space>
 map D delete
-map <backspace> set hidden!
+map g. set hidden!
 map E extract
 map p paste
 map R bulk-rename
