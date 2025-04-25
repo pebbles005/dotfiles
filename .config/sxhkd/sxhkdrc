@@ -18,25 +18,22 @@ super + Left
     notify-send --hint=string:x-dunst-stack-tag:brightness-notification "Brightness is at $(($(brightnessctl g) * 100 / $(brightnessctl m)))%"
 
 alt + t
-    alacritty
+    st
 
 alt + s 
-    rofi -show drun
+    dmenu_run_history
 
 alt + v 
     pavucontrol -t 4
 
-alt + F4
-    rofi-powermenu
-
 @Print
-    scrot $HOME/Pictures/screenshot-%Y-%m-%d-%H-%M-%S.png -s -f && notify-send "Screenshot Taken"
+    screenshot --select
 
 alt + @Print 
-    scrot $HOME/Pictures/screenshot-%Y-%m-%d-%H-%M-%S.png && notify-send "Screenshot Taken" 
+    screenshot
 
 alt + f
-    alacritty -e lflayer
+    st -e lflayer
 
 alt + shift + r
     bspc wm -r 

@@ -1,5 +1,5 @@
 [global]
-    width = 340
+    width = (340,600)
     origin = bottom-right
     offset = (20,20)
     padding = 18

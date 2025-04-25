@@ -100,6 +100,7 @@ alias countsize="du -sh ."
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
 alias gs='git status'
+alias xcopy='xclip -selection clipboard && (sleep 10 && xclip -selection clipboard /dev/null) &'
 
 # Searches for text in all files in the current folder
 ftext() {
