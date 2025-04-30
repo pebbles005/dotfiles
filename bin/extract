@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 for archive in "$@"; do
     if [ -f "$archive" ]; then

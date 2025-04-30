@@ -36,6 +36,8 @@ if [[ $iatest -gt 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 stty werase undef
 bind '"\C-w": backward-kill-word'
+bind '"\C-f": forward-word'
+bind '"\C-b": backward-word'
 
 # Set the default editor
 export EDITOR=nvim
