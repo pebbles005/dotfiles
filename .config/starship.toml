@@ -1,34 +1,19 @@
 format = """
-[┌─](fg:bright-black)\
-[$directory](fg:bright-black)\
+$directory\
 $git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
-\n[└$character](fg:bright-black)\
+$character\
 """
+add_newline = true
 
 [directory]
-format = '\[[$path]($style)\] '
 style = "fg:bold blue"
 truncation_length = 0
 truncate_to_repo = false
 
-
-[git_commit]
-tag_symbol = " tag "
-
-[git_status]
-ahead = ">"
-behind = "<"
-diverged = "<>"
-renamed = "r"
-deleted = "x"
-
 [git_branch]
-symbol = ""
+format = "[$branch]($style) "
+style = "red"
 
 [character]
-success_symbol = '[\$](fg:green)'
-error_symbol = '[\$](fg:red)'
+success_symbol = '[\$](fg:white)'
+error_symbol = '[\$](fg:white)'

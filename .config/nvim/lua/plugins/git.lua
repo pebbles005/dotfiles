@@ -9,17 +9,4 @@ return {
 			vim.keymap.set("n", "gl", ":diffget //3<CR>")
 		end,
 	},
-	{
-		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-
-				changedelete = { text = "~" },
-			},
-		},
-	},
 }
