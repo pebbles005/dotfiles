@@ -58,7 +58,6 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 fzf_defaults="-i --margin 5% --keep-right --filepath-word --height 100% --scroll-off 0 --info right --no-scrollbar --prompt '▌ ' --color='dark,fg:bright-black,fg+:green,bg+:-1,hl:yellow,hl+:yellow,info:bright-black,separator:bright-black,border:bright-black,prompt:magenta,pointer:green,marker:green,spinner:bright-black'"
 export FZF_DEFAULT_OPTS="$fzf_defaults"
 export _ZO_FZF_OPTS="$fzf_defaults"
-export GTK_THEME="adw-gtk3-dark"
 
 # GENERAL ALIAS'S
 alias cat='bat --theme=base16'
@@ -88,7 +87,7 @@ alias rmd='rm -rf -v'
 alias ls='ls -aFh --color=always' # add colors and file type extensions
 alias lk='ls -lSrh'               # sort by size
 alias lr='ls -lRh'                # recursive ls
-alias ldir="ls -l | egrep '^d'"   # directories only
+alias ld="ls -l | egrep '^d'"     # directories only
 alias mod='chmod a+x'
 alias unmod='chmod -x'
 alias 000='chmod -R 000'
@@ -100,7 +99,6 @@ alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 alias countfiles="for t in files links directories; do echo \`find . -type \${t:0:1} | wc -l\` \$t; done 2> /dev/null"
 alias countsize="du -sh ."
 alias diskspace="du -S | sort -n -r |more"
-alias folders='du -h --max-depth=1'
 alias gs='git status'
 alias xcopy='xclip -selection clipboard && (sleep 10 && xclip -selection clipboard /dev/null) &'
 

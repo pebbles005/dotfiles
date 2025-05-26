@@ -1,0 +1,24 @@
+#!/bin/sh
+
+get_brightness() {
+    current=$(brightnessctl g)
+    max=$(brightnessctl m)
+    echo $(( current * 100 / max ))
+}
+
+case "$1" in
+    -up)
+        brightnessctl set +5%
+        ;;
+    -down)
+        brightnessctl set 5%-
+        ;;
+    *)
+        echo "Usage: $0 -up | -down"
+        exit 1
+        ;;
+esac
+
+PERCENT=$(get_brightness)
+notify-send --hint=string:x-dunst-stack-tag:brightness-notification \
+    "Brightness is at ${PERCENT}%"

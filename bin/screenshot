@@ -1,13 +1,12 @@
 #!/usr/bin/env sh
 
-export DISPLAY=:0
-current=$(date +%H-%M-%S-%d-%m-%Y).png
+current="Screenshot-$(date +%H-%M-%S-%d-%m-%Y).png"
 mkdir -p $HOME/Pictures
 
 if [[ -z "${1}" ]]; then
-    import -window root $HOME/Pictures/$current || exit 0 # If no argument, full screen (all monitors)
+    scrot $HOME/Pictures/$current &&
+        notify-send "Screenshot saved: ${current}"
 else
-    import $HOME/Pictures/$current || exit 0 # Custom selection, or click a window
+    scrot $HOME/Pictures/$current -s -f &&
+        notify-send "Screenshot saved: ${current}"
 fi
-
-notify-send "Screenshot saved: ${current}"
