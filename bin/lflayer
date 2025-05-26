@@ -7,6 +7,7 @@ if [ -n "${DISPLAY-}" ] && [ -z "${FIFO_UEBERZUG-}" ]; then
         exec 3>&-
         rm -- "$FIFO_UEBERZUG"
         [ -d "$HOME/.cache/thumbnails" ] && rm -rf $HOME/.cache/thumbnails
+        [ -d "$HOME/.cache/ueberzugpp/" ] && rm -rf $HOME/.cache/ueberzugpp/
     }
     mkfifo -- "$FIFO_UEBERZUG"
     while ! ueberzug layer -s <"$FIFO_UEBERZUG"; do :; done &

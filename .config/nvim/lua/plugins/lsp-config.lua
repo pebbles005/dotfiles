@@ -13,29 +13,28 @@ local servers = {
 	"clangd",
 	"eslint",
 }
-
 return {
 	{
-		"williamboman/mason.nvim",
-		opts = {
-			ui = {
-				border = "single",
-				width = 1,
-			},
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {
+
+				ui = {
+					border = "single",
+					width = 1,
+				},
+			} },
+			"neovim/nvim-lspconfig",
 		},
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		dependencies = { "neovim/nvim-lspconfig" },
 		event = {
 			"BufReadPre",
 			"BufNewFile",
 		},
-		opts = {
-			automatic_installation = true,
-			ensure_installed = servers,
-		},
 		config = function()
+			require("mason-lspconfig").setup({
+				automatic_install = true,
+				ensure_installed = servers,
+			})
 			vim.lsp.enable(servers)
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),

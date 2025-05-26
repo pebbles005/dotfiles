@@ -1,0 +1,24 @@
+#!/bin/sh
+
+get_volume() {
+    pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1
+}
+
+pactl set-sink-mute @DEFAULT_SINK@ false
+case "$1" in
+-up)
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
+    VOLUME=$(get_volume)
+    [ "$VOLUME" -gt 150 ] && pactl set-sink-volume @DEFAULT_SINK@ 150%
+    ;;
+-down)
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
+    VOLUME=$(get_volume)
+    ;;
+*)
+    echo "Usage: $0 -up | -down"
+    exit 1
+    ;;
+esac
+
+notify-send --hint=string:x-dunst-stack-tag:volume-status "Volume is at ${VOLUME}%"

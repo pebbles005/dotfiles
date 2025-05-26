@@ -9,6 +9,7 @@ return {
 				"cpplint",
 				"clang-format",
 				"black",
+				"svelte",
 			},
 			run_on_start = true,
 			start_delay = 2000,
